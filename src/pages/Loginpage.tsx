@@ -1,9 +1,15 @@
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable prettier/prettier */
+import Mainbackground from "@components/Mainbackground";
 import React from "react";
+import mainBackground from "@images/mainBackground.png";
 
-function Loginpage() {
-	return <div></div>;
-}
+const Loginpage = () => {
+  return (
+    <div>
+      <Mainbackground>
+        <div>helloworld</div>
+      </Mainbackground>
+    </div>
+  );
+};
 
 export default Loginpage;
