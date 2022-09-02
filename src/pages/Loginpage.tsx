@@ -13,11 +13,9 @@ const Loginpage = () => {
           <div className="mt-14"></div>
           <Guestloginbutton />
           <div className="h-loginspacing1"> </div>
-
           <div className="">
             <img className="w-w11" src={loginarrow} alt="loginarrow" />
           </div>
-
           <div className="h-loginspacing1"> </div>
           <Userloginbutton />
         </div>

@@ -15,6 +15,7 @@ module.exports = {
         h8: "10vh",
         h9: "15vh",
         h10: "7vh",
+        h12: "80vh",
       },
       width: {
         w1: "100vw",
@@ -29,6 +30,7 @@ module.exports = {
         w9: "18vw",
         w10: "8vw",
         w11: "25vw",
+        w12: "50vw",
       },
       spacing: {
         loginspacing1: "4vh",
@@ -51,6 +53,9 @@ module.exports = {
         sps2: "70vh",
 
         spsr: "2vw",
+
+        rt: "15vh",
+        rl: "25vw",
       },
       colors: { mainblue: "#2C3342", mainorange: "#F99872" },
       backgroundImage: {},

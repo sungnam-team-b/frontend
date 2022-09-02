@@ -15,11 +15,11 @@ function Mainbackground(props: MainProps) {
   return (
     <div className="h-h1 bg-mainblue">
       <div className="flex justify-center">
-        <div className="absolute md:w-w2 md:h-h2 w-w3 h-h3 mt-sph2 ">
+        <div className="absolute md:w-w2 md:h-h2 w-w3 h-h3 ">
           <img src={logo} alt="logo" />
         </div>
       </div>
-      <div className="absolute md:w-w7 md:h-h7 w-w4 h-h4 mt-sph ml-spw">
+      <div className="absolute md:w-w7 md:h-h7 w-w4 h-h4 mt-sph ml-spw z-30">
         <img src={birds} alt="birds" />
       </div>
       <div className="">
