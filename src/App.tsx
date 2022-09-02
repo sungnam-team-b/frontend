@@ -4,7 +4,7 @@ import Loginpage from "@pages/Loginpage";
 import Mainbackground from "@components/Mainbackground";
 
 function App() {
-  return <Mainbackground></Mainbackground>;
+  return <Loginpage></Loginpage>;
 }
 
 export default App;

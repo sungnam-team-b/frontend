@@ -6,36 +6,51 @@ module.exports = {
       height: {
         h1: "100vh",
         guestloginh1: "7vh",
-
         h2: "50vh",
         h3: "70vh",
         h4: "50vh",
         h5: "20vh",
         h6: "30vw",
+        h7: "20vh",
+        h8: "10vh",
+        h9: "15vh",
+        h10: "7vh",
       },
       width: {
-        w1: "50vw",
+        w1: "100vw",
         guestloginw1: "25.6vw",
         w2: "50vw",
         w3: "70vw",
         w4: "50vw",
-        w5: "15vw",
+        w5: "19vw",
         w6: "30vw",
+        w7: "20vw",
+        w8: "100vw",
+        w9: "18vw",
+        w10: "8vw",
+        w11: "25vw",
       },
       spacing: {
-        loginspacing1: "8vh",
+        loginspacing1: "4vh",
         loginspacing2: "1.5vw",
         spw: "55vw",
-        sph: "60vh",
+        sph: "65vh",
         sph2: "5vh",
 
-        spc: "30vh",
+        spc: "40vh",
         spcw: "60vw",
 
         ml1: "87vw",
         ml2: "70vw",
 
+        footer: "70vh",
+
         Mt: "10vh",
+
+        sps: "25vh",
+        sps2: "70vh",
+
+        spsr: "2vw",
       },
       colors: { mainblue: "#2C3342", mainorange: "#F99872" },
       backgroundImage: {},
