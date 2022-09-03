@@ -54,7 +54,7 @@ module.exports = {
 
         spsr: "2vw",
 
-        rt: "15vh",
+        rt: "18vh",
         rl: "25vw",
       },
       colors: { mainblue: "#2C3342", mainorange: "#F99872" },

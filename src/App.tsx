@@ -2,10 +2,14 @@ import React from "react";
 
 import Loginpage from "@pages/Loginpage";
 import Mainbackground from "@components/Mainbackground";
-import Resultpage from "@pages/Resultpage";
+import Result from "@components/Result";
 
 function App() {
-  return <Resultpage></Resultpage>;
+  return (
+    <Mainbackground>
+      <Result></Result>
+    </Mainbackground>
+  );
 }
 
 export default App;
