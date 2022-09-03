@@ -1,5 +1,11 @@
 import React from "react";
 
+import birds from "@images/birds.png";
+import logo from "@images/logo.png";
+import cloud1 from "@images/cloud1.png";
+import cloud2 from "@images/cloud2.png";
+import footer from "@images/footer.png";
+import star from "@images/star.png";
 import mainBackground4 from "@images/mainBackground4.png";
 
 type MainProps = {
@@ -7,21 +13,30 @@ type MainProps = {
 };
 function Mainbackground(props: MainProps) {
   return (
-    <div
-      className="h-h1 w-w1 bg-center bg-cover bg-no-repeat
-
-    "
-      style={{ backgroundImage: `url(${mainBackground4})` }}
-    >
-      <div className="text-white absolute flex-col 2xl:mt-mainspacingt5 2xl:ml-mainspacingl5 xl:mt-mainspacingt1 xl:ml-mainspacingl1 md:mt-mainspacingt3 md:ml-mainspacingl3 sm:mt-mainspacingt4 sm:ml-mainspacingl4 ">
-        <div className="2xl:text-main2xl1 md:text-maint3small xl:text-maint1medium sm:text-maint5">
-          인공지능이 찾아주는
-        </div>
-        <div className="2xl:text-main2xl2 md:text-maint4small xl:text-maint2medium sm:text-maint6 mt-mainspacingt2 ml-mainspacingl2">
-          나와 닮은 대한민국의 위인 찾기
+    <div className="h-h1 bg-mainblue">
+      <div className="flex justify-center">
+        <div className="absolute md:w-w2 md:h-h2 w-w3 h-h3 mt-sph2 ">
+          <img src={logo} alt="logo" />
         </div>
       </div>
-
+      <div className="absolute md:w-w7 md:h-h7 w-w4 h-h4 mt-sph ml-spw">
+        <img src={birds} alt="birds" />
+      </div>
+      <div className="">
+        <img className="absolute w-w1 h-h8 bottom-0" src={footer} alt="footer" />
+      </div>
+      <div className="">
+        <img className="absolute w-w5 h-h5" src={cloud1} alt="cloud1" />
+      </div>
+      <div className="">
+        <img className="absolute w-w9 h-h9 right-0 mt-spc" src={cloud2} alt="cloud2" />
+      </div>
+      <div className="">
+        <img className="absolute w-10 h-h10 right-0 mt-sps mr-spsr" src={star} alt="star" />
+      </div>
+      <div className="">
+        <img className="absolute w-10 h-h10 mt-sps2 ml-spsr" src={star} alt="star" />
+      </div>
       {props.children}
     </div>
   );
