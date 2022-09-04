@@ -7,20 +7,18 @@ import loginarrow from "@images/loginarrow.png";
 
 const Loginpage = () => {
   return (
-    <div>
-      <Mainbackground>
-        <div className="w-w1 h-h1 flex justify-center flex items-center flex-col">
-          <div className="mt-14"></div>
-          <Guestloginbutton />
-          <div className="h-loginspacing1"> </div>
-          <div className="">
-            <img className="w-w11" src={loginarrow} alt="loginarrow" />
-          </div>
-          <div className="h-loginspacing1"> </div>
-          <Userloginbutton />
+    <Mainbackground>
+      <div className="w-w1 h-h1 flex justify-center flex items-center flex-col">
+        <div className="mt-14"></div>
+        <Guestloginbutton />
+        <div className="h-loginspacing1"> </div>
+        <div className="">
+          <img className="w-w11" src={loginarrow} alt="loginarrow" />
         </div>
-      </Mainbackground>
-    </div>
+        <div className="h-loginspacing1"> </div>
+        <Userloginbutton />
+      </div>
+    </Mainbackground>
   );
 };
 
