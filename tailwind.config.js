@@ -16,6 +16,12 @@ module.exports = {
         h9: "15vh",
         h10: "7vh",
         h12: "80vh",
+        h13: "70vh",
+        h14: "8vh",
+        h20: "20vw",
+        header: "25vh",
+        body: "50vh",
+        footer: "25vh",
       },
       width: {
         w1: "100vw",
@@ -30,7 +36,18 @@ module.exports = {
         w9: "18vw",
         w10: "8vw",
         w11: "25vw",
-        w12: "50vw",
+        w12: "35vw",
+        w13: "72vw",
+        w14: "6vw",
+        w15: "7vw",
+        w16: "10vw",
+        w17: "15vw",
+        w18: "7vw",
+        w19: "10vw",
+        w20: "20vw",
+        w21: "10vw",
+        w22: "10vw",
+        w23: "10vw",
       },
       spacing: {
         loginspacing1: "4vh",
@@ -54,10 +71,19 @@ module.exports = {
 
         spsr: "2vw",
 
-        rt: "18vh",
+        rt: "6vh",
         rl: "25vw",
+
+        rb: "25vh",
+
+        rt2: "23.5vh",
       },
-      colors: { mainblue: "#2C3342", mainorange: "#F99872" },
+      colors: {
+        mainblue: "#2C3342",
+        mainorange: "#F99872",
+        button1: "#558A42",
+        button2: "#44A222",
+      },
       backgroundImage: {},
       fontSize: {
         xs: ".75rem",
@@ -84,5 +110,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };
