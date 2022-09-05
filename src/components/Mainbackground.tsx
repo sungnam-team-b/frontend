@@ -23,7 +23,7 @@ function Mainbackground(props: MainProps) {
         <img src={birds} alt="birds" />
       </div>
       <div className="">
-        <img className="absolute w-w1 h-h8 bottom-0" src={footer} alt="footer" />
+        <img className="absolute w-w1 h-h8 bottom-0 z-40" src={footer} alt="footer" />
       </div>
       <div className="">
         <img className="absolute w-w5 h-h5" src={cloud1} alt="cloud1" />
