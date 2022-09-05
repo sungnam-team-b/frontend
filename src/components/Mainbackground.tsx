@@ -15,7 +15,7 @@ function Mainbackground(props: MainProps) {
   return (
     <div className="h-h1 bg-mainblue">
       <div className="flex justify-center">
-        <div className="absolute md:w-w2 md:h-h2 w-w3 h-h3 ">
+        <div className="absolute md:w-w2 md:h-h2 w-w3 h-h3 mt-7">
           <img src={logo} alt="logo" />
         </div>
       </div>
