@@ -4,7 +4,7 @@ import Loginpage from "@pages/Loginpage";
 import Mainpage from "@pages/Mainpage";
 
 function App() {
-  return <Mainpage></Mainpage>;
+  return <Loginpage></Loginpage>;
 }
 
 export default App;
