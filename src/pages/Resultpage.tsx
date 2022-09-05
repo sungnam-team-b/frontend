@@ -23,7 +23,7 @@ function Resultpage() {
           >
             <div className="flex flex-row mt-14">
               <div className="w-[10rem]">
-                <div className="flex  grid place-items-center	text-xs  ">
+                <div className="flex  grid place-items-center	text-xs mt-[12.5rem] ">
                   <div>이순신</div>
                   <div>김좌진</div>
                   <div>정약용</div>
@@ -56,7 +56,7 @@ function Resultpage() {
                 </div>
               </div>
               <div className="w-[10rem]">
-                <div className="flex  grid place-items-center text-xs	 ">
+                <div className="flex  grid place-items-center text-xs mt-[12.5rem]	 ">
                   <div>80%</div>
                   <div>60%</div>
                   <div>50%</div>
