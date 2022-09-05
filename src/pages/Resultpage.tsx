@@ -14,7 +14,7 @@ function Resultpage() {
   return (
     <Mainbackground>
       <div className="absolute z-40 w-full">
-        <div className="h-header">header</div>
+        <div className="h-header"></div>
         <div className="h-2"></div>
         <div className="h-body grid place-items-center">
           <div
@@ -23,7 +23,7 @@ function Resultpage() {
           >
             <div className="flex flex-row mt-14">
               <div className="w-[10rem]">
-                <div className="flex  grid place-items-center mt-rt2	text-xs  ">
+                <div className="flex  grid place-items-center	text-xs  ">
                   <div>이순신</div>
                   <div>김좌진</div>
                   <div>정약용</div>
@@ -56,7 +56,7 @@ function Resultpage() {
                 </div>
               </div>
               <div className="w-[10rem]">
-                <div className="flex  grid place-items-center mt-rt2 text-xs	 ">
+                <div className="flex  grid place-items-center text-xs	 ">
                   <div>80%</div>
                   <div>60%</div>
                   <div>50%</div>
@@ -66,7 +66,7 @@ function Resultpage() {
           </div>
         </div>
         <div className="h-2"></div>
-        <div className=" h-footer">footer</div>
+        <div className=" h-footer"></div>
       </div>
     </Mainbackground>
   );
