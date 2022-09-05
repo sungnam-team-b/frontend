@@ -30,6 +30,7 @@ function Topmenu() {
         <button className="mr-menuspacing mt-menubuttonspcaingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl">
           <img className="h-4 w-4" src={brightness} alt="brightness" />
         </button>
+
         {/* Logout - 로그아웃 */}
         <button className="mr-menuspacing mt-menubuttonspcaingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl">
           <img className="h-4 w-4" src={logout} alt="logouts" />
