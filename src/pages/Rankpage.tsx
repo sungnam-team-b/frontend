@@ -21,10 +21,10 @@ function Rankpage() {
               <Rankbox></Rankbox>
             </div>
           </div>
-          <div className="absolute inset-x-0 bottom-0 flex justify-center ">
-            <Backbutton />
-          </div>
         </div>
+      </div>
+      <div className="absolute inset-x-0 bottom-28 flex justify-center ">
+        <Backbutton />
       </div>
     </Mainbackground>
   );
