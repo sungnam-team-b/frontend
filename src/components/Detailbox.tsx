@@ -24,7 +24,7 @@ function Detailbox() {
       </div>
 
       {/* Mode: Mobile */}
-      <div className="md:hidden grid grid-rows-2 gap-24 border-5 content-center">
+      <div className="md:hidden mt-24 grid grid-rows-2 gap-24 border-5 content-center">
         <div className="box-border rounded-3xl h-52 w-52 p-4 border-2 border-black z-50 content-center">
           <div className="flex justify-center items-center flex-col">
             <div className="mt-20">image </div>

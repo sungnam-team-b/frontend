@@ -7,9 +7,10 @@ import Resultpage from "@pages/Resultpage";
 import Detailpage from "@pages/Detailpage";
 
 import { BarChart, Bar } from "recharts";
+import Rankpage from "@pages/Rankpage";
 
 function App() {
-  return <Detailpage></Detailpage>;
+  return <Rankpage></Rankpage>;
 }
 
 export default App;
