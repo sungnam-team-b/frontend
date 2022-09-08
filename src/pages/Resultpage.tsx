@@ -15,7 +15,6 @@ function Resultpage() {
     <Mainbackground>
       <div className="absolute z-40 w-full">
         <div className="h-header"></div>
-        <div className="h-2"></div>
         <div className="h-body grid place-items-center">
           <div
             className="absolute w-[30rem] h-[28rem] bg-mainorange bg-cover"
@@ -65,7 +64,6 @@ function Resultpage() {
             </div>
           </div>
         </div>
-        <div className="h-2"></div>
 
         <div className=" h-footer"></div>
       </div>

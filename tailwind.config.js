@@ -77,12 +77,19 @@ module.exports = {
         rb: "25vh",
 
         rt2: "23.5vh",
+
+        mt1: "10vh",
+        mt2: "10vw",
+        mt3: "86vw",
+        mt4: "40.5vw",
+        mt5: "8vh",
       },
       colors: {
         mainblue: "#2C3342",
         mainorange: "#F99872",
         button1: "#558A42",
         button2: "#44A222",
+        text1: "#F4DDB2",
       },
       backgroundImage: {},
       fontSize: {
