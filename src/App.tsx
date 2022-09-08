@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
-import Loginpage from "@pages/Loginpage";
-import Mainbackground from "@components/Mainbackground";
-import Result from "@components/Result";
-import Resultpage from "@pages/Resultpage";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import { BarChart, Bar } from "recharts";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
+// import required modules
+import { Navigation } from "swiper";
+import Intropage from "@pages/Intropage";
 
 function App() {
-  return <Resultpage></Resultpage>;
+  return <Intropage></Intropage>;
 }
 
 export default App;
