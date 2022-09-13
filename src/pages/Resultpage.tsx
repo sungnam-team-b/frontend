@@ -21,16 +21,20 @@ function Resultpage() {
             style={{ background: `url(${result})`, backgroundSize: "100%" }}
           >
             <div className="flex flex-row mt-14">
-              <div className="w-[10rem]">
-                <div className="flex  grid place-items-center	mt-[12.5rem] text-xs   ">
+              <div className="w-[9rem]">
+                <div className="flex  grid place-items-center	mt-[12.5rem] text-xs ml-20  ">
                   <div>이순신</div>
                   <div>김좌진</div>
                   <div>정약용</div>
                 </div>
               </div>
-              <div className="w-[10rem]">
+              <div className="w-[12rem]">
                 <div className=" text-center grid place-items-center flex flex-column mt-2">
-                  <img className="w-[5rem]" src={great1}></img>
+                  <div className="flex flex-row">
+                    <img className="w-[5rem] mr-11" src={great1}></img>
+                    <img className="w-[5rem]" src={great1}></img>
+                  </div>
+
                   <div>
                     <p className="text-sm mt-2">이순신</p>
                     <p className="text-xs text-slate-500">255523명중 120등</p>
@@ -54,8 +58,8 @@ function Resultpage() {
                   </div>
                 </div>
               </div>
-              <div className="w-[10rem]">
-                <div className="flex  grid place-items-center mt-[12.5rem] text-xs   ">
+              <div className="w-[9rem]">
+                <div className="flex  grid place-items-center mt-[12.5rem] text-xs mr-20">
                   <div>80%</div>
                   <div>60%</div>
                   <div>50%</div>

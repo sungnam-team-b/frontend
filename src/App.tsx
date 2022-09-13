@@ -8,10 +8,11 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper";
-import Intropage from "@pages/Intropage";
+import Mypage from "@pages/Mypage";
+import Resultpage from "@pages/Resultpage";
 
 function App() {
-  return <Intropage></Intropage>;
+  return <Resultpage></Resultpage>;
 }
 
 export default App;
