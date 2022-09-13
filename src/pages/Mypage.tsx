@@ -3,11 +3,12 @@ import React from "react";
 import intro from "@images/intro.png";
 import Slider from "@components/Slider";
 import Slider2 from "@components/Slider2";
+import Mainbackground3 from "@components/Mainbackground3";
 
 function Intropage() {
   return (
     <div>
-      <Mainbackground2>
+      <Mainbackground3>
         <div className="absolute z-40 w-full">
           <div className="h-header"></div>
           <div className="h-body w-full ">
@@ -22,7 +23,7 @@ function Intropage() {
 
           <div className=" h-footer"></div>
         </div>
-      </Mainbackground2>
+      </Mainbackground3>
     </div>
   );
 }

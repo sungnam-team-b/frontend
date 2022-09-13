@@ -12,7 +12,7 @@ import Mypage from "@pages/Mypage";
 import Resultpage from "@pages/Resultpage";
 
 function App() {
-  return <Resultpage></Resultpage>;
+  return <Mypage></Mypage>;
 }
 
 export default App;
