@@ -56,6 +56,13 @@ module.exports = {
         sph: "65vh",
         sph2: "5vh",
 
+        menuspacing: "2vh",
+        menubuttonspacingt: "3vh",
+        menubuttonspacingt2: "4vh",
+        menubuttonspacingt3: "4.5vh",
+
+        buttonspacingt: "20vh",
+
         spc: "40vh",
         spcw: "60vw",
 
