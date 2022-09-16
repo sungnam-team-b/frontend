@@ -16,14 +16,14 @@ import "./styles.css";
 import { Pagination, Navigation } from "swiper";
 
 let greats = [
-  { name: "이순신", img: great1, discription: "이 위인은 이순신입니다" },
-  { name: "유관순", img: great1, discription: "이 위인은 이순신입니다" },
-  { name: "김좌진", img: great1, discription: "이 위인은 이순신입니다" },
-  { name: "정주영", img: great1, discription: "이 위인은 이순신입니다" },
-  { name: "싸이", img: great1, discription: "이 위인은 이순신입니다" },
-  { name: "손흥민", img: great1, discription: "이 위인은 이순신입니다" },
-  { name: "박지성", img: great1, discription: "이 위인은 이순신입니다" },
-  { name: "김연아", img: great1, discription: "이 위인은 이순신입니다" },
+  { name: "호랑이", img: great1, discription: "이 위인은 이순신입니다" },
+  { name: "호랑이", img: great1, discription: "이 위인은 이순신입니다" },
+  { name: "호랑이", img: great1, discription: "이 위인은 이순신입니다" },
+  { name: "호랑이", img: great1, discription: "이 위인은 이순신입니다" },
+  { name: "호랑이", img: great1, discription: "이 위인은 이순신입니다" },
+  { name: "호랑이", img: great1, discription: "이 위인은 이순신입니다" },
+  { name: "호랑이", img: great1, discription: "이 위인은 이순신입니다" },
+  { name: "호랑이", img: great1, discription: "이 위인은 이순신입니다" },
 ];
 
 function Slider() {

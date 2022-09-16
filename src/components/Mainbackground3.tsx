@@ -17,7 +17,7 @@ function Mainbackground2(props: MainProps) {
         <img src={flower} alt="flower" />
       </div>
       <div className="absolute mt-mt5 w-full text-center text-text1 md:text-[2.9rem] z-40 text-[1.5rem]">
-        올해의 운세
+        마이페이지
       </div>
 
       <div className="">

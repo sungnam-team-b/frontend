@@ -15,9 +15,11 @@ import Signinpage from "@pages/Signinpage";
 import Signuppage from "@pages/Signuppage";
 import Detailpage from "@pages/Detailpage";
 import Mainpage from "@pages/Mainpage";
+import Intropage from "@pages/Intropage";
+import Loginpage from "@pages/Loginpage";
 
 function App() {
-  return <Mainpage></Mainpage>;
+  return <Resultpage></Resultpage>;
 }
 
 export default App;
