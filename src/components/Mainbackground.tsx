@@ -7,13 +7,17 @@ import cloud2 from "@images/cloud2.png";
 import footer from "@images/footer.png";
 import star from "@images/star.png";
 import mainBackground4 from "@images/mainBackground4.png";
+import { ReducerType } from "../rootReducer";
+import { useSelector } from "react-redux";
 
 type MainProps = {
   children: React.ReactNode; // 👈️ type children
 };
 function Mainbackground(props: MainProps) {
+  const theme = useSelector<ReducerType, any>(state => state.theme.value);
+
   return (
-    <div className="h-h1 bg-mainblue">
+    <div className="h-h1" style={{ backgroundColor: theme }}>
       <div className="flex justify-center">
         <div className="absolute md:w-w2 md:h-h2 w-w3 h-h3 ">
           <img src={logo} alt="logo" />
