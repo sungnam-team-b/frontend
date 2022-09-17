@@ -19,7 +19,7 @@ import Intropage from "@pages/Intropage";
 import Loginpage from "@pages/Loginpage";
 
 function App() {
-  return <Resultpage></Resultpage>;
+  return <Signinpage></Signinpage>;
 }
 
 export default App;

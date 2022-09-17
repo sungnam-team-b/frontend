@@ -11,7 +11,9 @@ const Signinpage = () => {
     <Mainbackground>
       <div className="w-w1 h-h1 flex justify-center flex items-center flex-col">
         <div className="mt-14"></div>
-        <Signinbox />
+        <div className=" bg-white rounded-2xl h-boxborder w-boxborder p-4 border-2 fill-current border-white z-50">
+          <Signinbox />
+        </div>
       </div>
     </Mainbackground>
   );

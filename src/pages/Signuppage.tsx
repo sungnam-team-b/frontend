@@ -26,9 +26,6 @@ const Signuppage = () => {
           </div>
         </div>
       </div>
-      <div className="absolute inset-x-0 bottom-menubuttonspacingt3 flex justify-center ">
-        <Signupbutton />
-      </div>
     </Mainbackground>
   );
 };
