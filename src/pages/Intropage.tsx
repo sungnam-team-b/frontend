@@ -2,12 +2,14 @@ import Mainbackground2 from "@components/Mainbackground2";
 import React from "react";
 import intro from "@images/intro.png";
 import Slider from "@components/Slider";
+import Topmenu from "@components/Topmenu";
 
 function Intropage() {
   return (
     <div>
       <Mainbackground2>
         <div className="absolute z-40 w-full">
+          <Topmenu />
           <div className="h-header"></div>
           <div className="h-body w-full ">
             <div
