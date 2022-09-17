@@ -34,7 +34,7 @@ function Signupbox() {
   const submit = async (values: any) => {
     const { email, username, password } = values;
     try {
-      await axios.post("/http://localhost:8080/v1/api/users/", {
+      await axios.post("http://localhost:8080/v1/api/users/", {
         email,
         username,
         password,

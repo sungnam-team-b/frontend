@@ -4,8 +4,11 @@ import mainBackground from "@images/mainBackground.png";
 import Guestloginbutton from "@components/Guestloginbutton";
 import Userloginbutton from "@components/Userloginbutton";
 import loginarrow from "@images/loginarrow.png";
+import { useNavigate } from "react-router-dom";
 
 const Loginpage = () => {
+  const navigate = useNavigate();
+
   return (
     <Mainbackground>
       <div className="w-w1 h-h1 flex justify-center flex items-center flex-col">
