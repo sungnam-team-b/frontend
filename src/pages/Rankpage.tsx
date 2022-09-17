@@ -8,8 +8,8 @@ import Backbutton from "@components/Backbutton";
 function Rankpage() {
   return (
     <Mainbackground>
-      <Topmenu />
       <div className="absolute z-40 w-full">
+        <Topmenu />
         <div className="h-header"></div>
         <div className="h-2"></div>
         <div className="h-body grid place-items-center">

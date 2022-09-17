@@ -8,6 +8,7 @@ import dark from "@images/dark.png";
 import styled from "styled-components";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { changeTheme } from "@slices/theme";
+import { useNavigate } from "react-router-dom";
 
 // 상단바 메뉴 컴포넌트
 
@@ -31,6 +32,7 @@ function Topmenu() {
     e.preventDefault();
     dispatch(changeTheme(color));
   };
+  const navigate = useNavigate();
 
   return (
     <nav>
@@ -48,10 +50,17 @@ function Topmenu() {
         </div>
         <div className="mr-menuspacing mt-menubuttonspacingt2">게스트</div>
         <div className="mr-menuspacing mt-menubuttonspacingt2">비회원</div>
-        <button className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl">
-          설명
+
+        <button
+          className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
+          onClick={() => navigate("/Intropage")}
+        >
+          운세
         </button>
-        <button className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl">
+        <button
+          className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
+          onClick={() => navigate("/Rankpage")}
+        >
           순위
         </button>
       </div>
