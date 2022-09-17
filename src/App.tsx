@@ -21,7 +21,7 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme } from "@theme/theme";
 
 function App() {
-  return <Resultpage></Resultpage>;
+  return <Signinpage></Signinpage>;
 }
 
 export default App;
