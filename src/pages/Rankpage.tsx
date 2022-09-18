@@ -23,7 +23,7 @@ function Rankpage() {
           </div>
         </div>
       </div>
-      <div className="absolute inset-x-0 bottom-menubuttonspacingt3 flex justify-center ">
+      <div className="absolute inset-x-0 bottom-menubuttonspacing4 flex justify-center ">
         <Backbutton />
       </div>
     </Mainbackground>
