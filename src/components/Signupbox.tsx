@@ -10,19 +10,32 @@ import { is } from "immer/dist/internal";
 function Signupbox() {
   // 형식 확인
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email("올바른 이메일 형식이 아닙니다!").required("이메일을 입력하세요."),
+    email: Yup.string()
+      .email("올바른 이메일 형식이 아닙니다.")
+      .test(
+        "사용가능합니다.",
+        "이미 등록된 이메일 입니다.",
+        async email => (await checkID("email", email)) === 1,
+      )
+      .required("이메일을 입력하세요."),
     username: Yup.string()
       .min(2, "아이디는 2글자 이상입니다.")
       .max(10, "아이디는 최대 10글자입니다.")
       .matches(
         /^[a-zA-Z][^!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?\s]*$/,
-        "다시 입력해주세요. (영어로 입력)",
+        "다시 입력해주세요. (영어, 숫자 조합)",
+      )
+      .test(
+        "사용가능합니다.",
+        "이미 등록된 아이디 입니다.",
+        async username => (await checkID("username", username)) === 1,
       )
       .required("아이디를 입력하세요."),
     password: Yup.string()
       .min(8, "비밀번호는 최소 8자리 이상입니다.")
       .max(16, "비밀번호는 최대 16자리입니다.")
-      .required("패스워드를 입력하세요.")
+      .required("비밀번호를 입력하세요.")
+      .defined()
       .matches(
         /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[^\s]*$/,
         "대,소문자, 숫자, 특수문자 중 3개 이상 포함해야합니다.",
@@ -37,6 +50,11 @@ function Signupbox() {
         /^[가-힣a-zA-Z][^!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?\s]*$/,
         "특수문자가 포함되면 안되고 숫자로 시작하면 안됩니다.",
       )
+      .test(
+        "사용가능합니다.",
+        "이미 등록된 닉네임 입니다.",
+        async alias => (await checkID("alias", alias)) === 1,
+      )
       .required("닉네임을 입력하세요."),
   });
 
@@ -44,59 +62,29 @@ function Signupbox() {
   const submit = async (values: any) => {
     const { email, username, password, alias } = values;
     try {
-      if ((await check(values)) === 1) {
-        //중복
-      } else {
-        // 중복이 없을 경우 POST
-        await axios.post("http://localhost:8080/v1/api/users/", {
-          email,
-          username,
-          password,
-          alias,
-        });
-        alert("회원가입 성공");
-        setTimeout(() => {
-          // 회원가입 후 이동
-          console.log(values);
-        }, 2000);
-      }
+      await axios.post("http://localhost:8080/v1/api/users/", {
+        email,
+        username,
+        password,
+        alias,
+      });
+      alert("회원가입 성공");
+      setTimeout(() => {
+        // 회원가입 후 이동
+        console.log(values);
+      }, 2000);
     } catch (e) {
-      console.log("dss");
+      console.log("error");
       // 서버에서 받은 에러 메시지 출력
     }
   };
 
-  // 중복 확인 함수  return: result => ([1 : 중복 ㅇ] or [0 : 중복 x])
-  const check = async (values: any) => {
-    const { email, username, password, alias } = values;
-    try {
-      let result = 0;
-      const emailData = await axios.get(
-        "http://localhost:8080/v1/api/users/?case=email&value=${email}",
-      );
-      // const nameData = await axios.get(
-      //   "http://localhost:8080/v1/api/users/?case=username&value=${username}",
-      // );
-      const aliasData = await axios.get(
-        "http://localhost:8080/v1/api/users/?case=alias&value=${alias}",
-      );
-      if (emailData) {
-        alert("이미 등록된 이메일 입니다.");
-        result = 1;
-      }
-      if (aliasData) {
-        //중복
-        alert("이미 등록된 닉네임 입니다.");
-        result = 1;
-      }
-      // if (nameData) {
-      //   //중복
-      //   alert("이미 등록된 아이디 입니다.");
-      //   result = 1;
-      // }
-      return result;
-    } catch (e) {
-      console.log("err");
+  const checkID = async (type: string | undefined, value: any | undefined) => {
+    const data = await axios.get(`http://localhost:8080/v1/api/users/?case=${type}&value=${value}`);
+    if (data.data.result === false) {
+      return 0;
+    } else {
+      return 1;
     }
   };
 

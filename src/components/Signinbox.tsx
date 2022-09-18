@@ -24,6 +24,7 @@ function Signinbox() {
       });
       if (result) {
         console.log(result.data);
+        console.log(result);
         alert("로그인 완료");
       } else {
         console.log("bbb");
@@ -31,6 +32,8 @@ function Signinbox() {
     } catch (e) {
       alert("아이디 혹은 비밀번호를 확인해주세요.");
       // 서버에서 받은 에러 메시지 출력
+      console.log(username);
+      console.log(password);
     }
   };
 
