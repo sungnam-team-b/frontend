@@ -9,28 +9,21 @@ import styled from "styled-components";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { changeTheme } from "@slices/theme";
 import { useNavigate } from "react-router-dom";
+import { ReducerType } from "../rootReducer";
 
 // 상단바 메뉴 컴포넌트
 
 function Topmenu() {
-  const [color, setColor] = useState("#F99872");
+  const theme = useSelector<ReducerType, any>(state => state.theme.value);
+
   const dispatch = useDispatch();
-
-  const handleChangeColor = async (e: any) => {
-    await console.log("buttonclicked!!");
-    if (color === "#2C3342") await setColor("#F99872");
-    else {
-      await setColor("#2C3342");
-      await console.log("else");
-      await console.log(color);
-    }
-
-    await handleTheme(e);
-  };
 
   const handleTheme = (e: any) => {
     e.preventDefault();
-    dispatch(changeTheme(color));
+    if (theme === "#F99872") dispatch(changeTheme("#2C3342"));
+    else {
+      dispatch(changeTheme("#F99872"));
+    }
   };
   const navigate = useNavigate();
 
@@ -39,7 +32,7 @@ function Topmenu() {
       {/* MODE: WEB */}
       <div className="absolute md:-right-0 md:flex flex-row-reverse text-white">
         <div className="mr-12 mt-menubuttonspacingt3">
-          <button onClick={handleChangeColor}>
+          <button onClick={handleTheme}>
             <img className="h-4 w-4" src={dark} alt="dark" />
           </button>
         </div>
