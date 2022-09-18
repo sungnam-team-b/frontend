@@ -3,6 +3,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { TextField, Button } from "@material-ui/core";
+import { is } from "immer/dist/internal";
 
 // 회원가입 박스
 
@@ -13,7 +14,10 @@ function Signupbox() {
     username: Yup.string()
       .min(2, "아이디는 2글자 이상입니다.")
       .max(10, "아이디는 최대 10글자입니다.")
-      .matches(/^[가-힣a-zA-Z][^!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?\s]*$/, "다시 입력해주세요.")
+      .matches(
+        /^[a-zA-Z][^!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?\s]*$/,
+        "다시 입력해주세요. (영어로 입력)",
+      )
       .required("아이디를 입력하세요."),
     password: Yup.string()
       .min(8, "비밀번호는 최소 8자리 이상입니다.")
@@ -21,7 +25,7 @@ function Signupbox() {
       .required("패스워드를 입력하세요.")
       .matches(
         /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[^\s]*$/,
-        "대문자, 소문자, 숫자, 특수문자 중 3개 이상 포함해야합니다.",
+        "대,소문자, 숫자, 특수문자 중 3개 이상 포함해야합니다.",
       ),
     passwordConfirm: Yup.string()
       .oneOf([Yup.ref("password"), null], "비밀번호가 일치하지 않습니다.")
@@ -35,23 +39,64 @@ function Signupbox() {
       )
       .required("닉네임을 입력하세요."),
   });
-  // const submit = () => {};
+
+  // 양식 제출
   const submit = async (values: any) => {
     const { email, username, password, alias } = values;
     try {
-      await axios.post("http://localhost:8080/v1/api/users/", {
-        email,
-        username,
-        password,
-        alias,
-      });
-      setTimeout(() => {
-        // 회원가입 후 이동
-        console.log(values);
-      }, 2000);
+      if ((await check(values)) === 1) {
+        //중복
+      } else {
+        // 중복이 없을 경우 POST
+        await axios.post("http://localhost:8080/v1/api/users/", {
+          email,
+          username,
+          password,
+          alias,
+        });
+        alert("회원가입 성공");
+        setTimeout(() => {
+          // 회원가입 후 이동
+          console.log(values);
+        }, 2000);
+      }
     } catch (e) {
-      console.log(values);
+      console.log("dss");
       // 서버에서 받은 에러 메시지 출력
+    }
+  };
+
+  // 중복 확인 함수  return: result => ([1 : 중복 ㅇ] or [0 : 중복 x])
+  const check = async (values: any) => {
+    const { email, username, password, alias } = values;
+    try {
+      let result = 0;
+      const emailData = await axios.get(
+        "http://localhost:8080/v1/api/users/?case=email&value=${email}",
+      );
+      // const nameData = await axios.get(
+      //   "http://localhost:8080/v1/api/users/?case=username&value=${username}",
+      // );
+      const aliasData = await axios.get(
+        "http://localhost:8080/v1/api/users/?case=alias&value=${alias}",
+      );
+      if (emailData) {
+        alert("이미 등록된 이메일 입니다.");
+        result = 1;
+      }
+      if (aliasData) {
+        //중복
+        alert("이미 등록된 닉네임 입니다.");
+        result = 1;
+      }
+      // if (nameData) {
+      //   //중복
+      //   alert("이미 등록된 아이디 입니다.");
+      //   result = 1;
+      // }
+      return result;
+    } catch (e) {
+      console.log("err");
     }
   };
 
