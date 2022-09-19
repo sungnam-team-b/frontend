@@ -18,12 +18,12 @@ function Rankpage() {
             style={{ background: `url(${result})`, backgroundSize: "100%" }}
           >
             <div className="flex flex-row justify-center mt-14">
-              <Rankbox></Rankbox>
+              <Rankbox />
             </div>
           </div>
         </div>
       </div>
-      <div className="absolute inset-x-0 bottom-menubuttonspacingt3 flex justify-center ">
+      <div className="absolute inset-x-0 bottom-menubuttonspacing4 flex justify-center ">
         <Backbutton />
       </div>
     </Mainbackground>

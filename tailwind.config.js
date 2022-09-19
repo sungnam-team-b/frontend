@@ -60,6 +60,7 @@ module.exports = {
         menubuttonspacingt: "3vh",
         menubuttonspacingt2: "4vh",
         menubuttonspacingt3: "4.5vh",
+        menubuttonspacing4: "13vh",
 
         buttonspacingt: "12vh",
         boxborder: "50vh",

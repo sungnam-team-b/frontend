@@ -3,6 +3,7 @@ import React from "react";
 import intro from "@images/intro.png";
 import Slider from "@components/Slider";
 import Topmenu from "@components/Topmenu";
+import Backbutton from "@components/Backbutton";
 
 function Intropage() {
   return (
@@ -21,7 +22,9 @@ function Intropage() {
             </div>
           </div>
 
-          <div className=" h-footer"></div>
+          <div className=" h-footer flex justify-center align-center">
+            <Backbutton />
+          </div>
         </div>
       </Mainbackground2>
     </div>

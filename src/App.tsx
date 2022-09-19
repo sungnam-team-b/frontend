@@ -22,15 +22,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    // <Router>
-    //   <Routes>
-    //     <Route path="/" element={<Loginpage />} />
-    //     <Route path="/Mainpage" element={<Mainpage />} />
-    //     <Route path="/Rankpage" element={<Rankpage />} />
-    //     <Route path="/Intropage" element={<Intropage />} />
-    //   </Routes>
-    // </Router>
-    <Signuppage></Signuppage>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Loginpage />} />
+        <Route path="/Mainpage" element={<Mainpage />} />
+        <Route path="/Rankpage" element={<Rankpage />} />
+        <Route path="/Intropage" element={<Intropage />} />
+        <Route path="/Detailpage" element={<Detailpage />} />
+      </Routes>
+    </Router>
   );
 }
 
