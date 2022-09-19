@@ -10,9 +10,8 @@ function Mainpage() {
       <Mainbackground>
         <Topmenu />
         <div className="w-w1 h-h1 flex justify-center items-center flex-col flex-start">
-          <div className="mt-14" />
+          <div className="mt-menubuttonspacingt3" />
           <Photouploadbox />
-          <Startbutton />
         </div>
       </Mainbackground>
     </div>
