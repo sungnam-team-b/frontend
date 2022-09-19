@@ -13,19 +13,30 @@ import { withStyles } from "@material-ui/core/styles";
 import { ClassNames } from "@emotion/react";
 import { borders } from "@mui/system";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Signinbox() {
+  const navigate = useNavigate();
+  const JWT_EXPIRY_TIME = 24 * 3600 * 1000 * 7; // 만료 시간 (24시간 밀리 초로 표현)
+  const data = {
+    email: "",
+    password: "",
+  };
   const submit = async (values: any) => {
     const { username, password } = values;
+
     try {
       const result = await axios.post("http://localhost:8080/v1/api/users/auth", {
         username,
         password,
       });
+
       if (result) {
         console.log(result.data);
         console.log(result);
         alert("로그인 완료");
+        navigate("/Mainpage");
+        onLoginSuccess(result);
       } else {
         console.log("bbb");
       }
@@ -35,6 +46,27 @@ function Signinbox() {
       console.log(username);
       console.log(password);
     }
+  };
+
+  const onSilentRefresh = () => {
+    axios
+      .post("http://localhost:8080/v1/api/users/auth", data)
+      .then(onLoginSuccess)
+      .catch(error => {
+        // ... 로그인 실패 처리
+      });
+  };
+
+  const onLoginSuccess = (response: { data: { accessToken: any } }) => {
+    console.log(response.data);
+    const { accessToken } = response.data;
+    console.log(accessToken);
+
+    // accessToken 설정
+    axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+
+    // accessToken 만료하기 1분 전에 로그인 연장
+    setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 60000);
   };
 
   const styles = {
@@ -105,7 +137,9 @@ function Signinbox() {
             </Button>
             <div className="grid grid-cols-2 gap-8 items-center ml-rt mt-loginspacing1 z-50">
               <div className="text-black">Is this your first visit?</div>
-              <div className="text-blue-300">Sign up</div>
+              <div className="text-blue-300">
+                <button onClick={() => navigate("/Signuppage")}>Sign up</button>
+              </div>
             </div>
           </form>
         </div>

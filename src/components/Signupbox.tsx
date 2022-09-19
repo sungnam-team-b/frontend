@@ -4,10 +4,13 @@ import * as Yup from "yup";
 import axios from "axios";
 import { TextField, Button } from "@material-ui/core";
 import { is } from "immer/dist/internal";
+import { useNavigate } from "react-router-dom";
 
 // 회원가입 박스
 
 function Signupbox() {
+  const navigate = useNavigate();
+
   // 형식 확인
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -71,6 +74,7 @@ function Signupbox() {
       alert("회원가입 성공");
       setTimeout(() => {
         // 회원가입 후 이동
+        navigate("/");
         console.log(values);
       }, 2000);
     } catch (e) {
