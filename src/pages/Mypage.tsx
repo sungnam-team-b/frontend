@@ -4,12 +4,14 @@ import intro from "@images/intro.png";
 import Slider from "@components/Slider";
 import Slider2 from "@components/Slider2";
 import Mainbackground3 from "@components/Mainbackground3";
+import Topmenu from "@components/Topmenu";
 
-function Intropage() {
+function Mypage() {
   return (
     <div>
       <Mainbackground3>
         <div className="absolute z-40 w-full">
+          <Topmenu />
           <div className="h-header"></div>
           <div className="h-body w-full ">
             <div
@@ -28,4 +30,4 @@ function Intropage() {
   );
 }
 
-export default Intropage;
+export default Mypage;

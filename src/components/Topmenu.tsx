@@ -37,7 +37,12 @@ function Topmenu() {
           </button>
         </div>
         <div className="mr-menuspacing mt-menubuttonspacingt3">
-          <button>
+          <button
+            onClick={() => {
+              navigate("/");
+              alert("로그아웃 되었습니다!");
+            }}
+          >
             <img className="h-4 w-4" src={logout} alt="logout" />
           </button>
         </div>
@@ -55,6 +60,13 @@ function Topmenu() {
           onClick={() => navigate("/Rankpage")}
         >
           순위
+        </button>
+
+        <button
+          className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
+          onClick={() => navigate("/Mypage")}
+        >
+          마이페이지
         </button>
       </div>
     </nav>

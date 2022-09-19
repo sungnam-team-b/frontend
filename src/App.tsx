@@ -31,6 +31,7 @@ function App() {
         <Route path="/Rankpage" element={<Rankpage />} />
         <Route path="/Intropage" element={<Intropage />} />
         <Route path="/Detailpage" element={<Detailpage />} />
+        <Route path="/Mypage" element={<Mypage />} />
       </Routes>
     </Router>
   );
