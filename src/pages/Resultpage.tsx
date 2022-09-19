@@ -4,6 +4,7 @@ import Mainbackground from "@components/Mainbackground";
 import Picturebutton from "@components/Picturebutton";
 import Rankbutton from "@components/Rankbutton";
 import Result from "@components/Result";
+import Topmenu from "@components/Topmenu";
 import Urlbutton from "@components/Urlbutton";
 import great1 from "@images/great1.png";
 import result from "@images/result.png";
@@ -14,6 +15,8 @@ function Resultpage() {
   return (
     <Mainbackground>
       <div className="absolute z-40 w-full">
+        <Topmenu />
+
         <div className="h-header"></div>
         <div className="h-body grid place-items-center">
           <div
@@ -23,9 +26,9 @@ function Resultpage() {
             <div className="flex flex-row mt-14">
               <div className="w-[9rem]">
                 <div className="flex  grid place-items-center	mt-[12.5rem] text-xs ml-20  ">
-                  <div>이순신</div>
-                  <div>김좌진</div>
-                  <div>정약용</div>
+                  <div>호랑이</div>
+                  <div>용</div>
+                  <div>돼지</div>
                 </div>
               </div>
               <div className="w-[12rem]">
@@ -36,7 +39,7 @@ function Resultpage() {
                   </div>
 
                   <div>
-                    <p className="text-sm mt-2">이순신</p>
+                    <p className="text-sm mt-2">호랑이</p>
                     <p className="text-xs text-slate-500">255523명중 120등</p>
                   </div>
                   <Result></Result>

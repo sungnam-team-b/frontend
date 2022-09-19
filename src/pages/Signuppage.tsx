@@ -1,15 +1,18 @@
-import React from "react";
-import result from "@images/result.png";
 import Mainbackground from "@components/Mainbackground";
-import Rankbox from "@components/Rankbox";
-import Topmenu from "@components/Topmenu";
-import Backbutton from "@components/Backbutton";
+import React from "react";
+import mainBackground from "@images/mainBackground.png";
+import Guestloginbutton from "@components/Guestloginbutton";
+import Userloginbutton from "@components/Userloginbutton";
+import loginarrow from "@images/loginarrow.png";
+import Signinbox from "@components/Signinbox";
+import Signupbox from "@components/Signupbox";
+import result from "@images/result.png";
+import Signupbutton from "@components/Signupbutton";
 
-function Rankpage() {
+const Signuppage = () => {
   return (
     <Mainbackground>
       <div className="absolute z-40 w-full">
-        <Topmenu />
         <div className="h-header"></div>
         <div className="h-2"></div>
         <div className="h-body grid place-items-center">
@@ -18,16 +21,13 @@ function Rankpage() {
             style={{ background: `url(${result})`, backgroundSize: "100%" }}
           >
             <div className="flex flex-row justify-center mt-14">
-              <Rankbox />
+              <Signupbox></Signupbox>
             </div>
           </div>
         </div>
       </div>
-      <div className="absolute inset-x-0 bottom-menubuttonspacing4 flex justify-center ">
-        <Backbutton />
-      </div>
     </Mainbackground>
   );
-}
+};
 
-export default Rankpage;
+export default Signuppage;

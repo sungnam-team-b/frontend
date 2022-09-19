@@ -56,6 +56,16 @@ module.exports = {
         sph: "65vh",
         sph2: "5vh",
 
+        menuspacing: "2vh",
+        menubuttonspacingt: "3vh",
+        menubuttonspacingt2: "4vh",
+        menubuttonspacingt3: "4.5vh",
+        menubuttonspacing4: "13vh",
+
+        buttonspacingt2: "20vh",
+        buttonspacingt: "12vh",
+        boxborder: "50vh",
+
         spc: "40vh",
         spcw: "60vw",
 
@@ -93,6 +103,7 @@ module.exports = {
       },
       backgroundImage: {},
       fontSize: {
+        xxs: ".5rem",
         xs: ".75rem",
         sm: ".875rem",
         tiny: ".875rem",

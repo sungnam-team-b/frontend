@@ -1,17 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Guestloginbutton() {
+// 뒤로가기 버튼
+
+function Backbutton() {
   const navigate = useNavigate();
 
   return (
     <button
-      className="absoulte h-guestloginh1 w-guestloginw1 bg-green-500 text-xs md:text-xl z-40"
+      className="mt-14 bg-green-500 p-4 pl-12 pr-12 rounded-3xl z-50 w-[10rem] h-[3rem]"
       onClick={() => navigate("/Mainpage")}
     >
-      비회원 로그인
+      돌아가기
     </button>
   );
 }
-
-export default Guestloginbutton;
+export default Backbutton;
