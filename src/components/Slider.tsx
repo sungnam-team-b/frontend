@@ -17,7 +17,7 @@ import "./styles.css";
 // import required modules
 import { Pagination, Navigation } from "swiper";
 
-type greatType = { id: number; name: string; description: string; great_url: string };
+//type greatType = { id: number; name: string; description: string; great_url: string };
 
 let greats = [{ name: "", description: "", great_url: "" }];
 
