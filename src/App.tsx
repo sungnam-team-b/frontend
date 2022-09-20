@@ -32,6 +32,7 @@ function App() {
         <Route path="/Intropage" element={<Intropage />} />
         <Route path="/Detailpage" element={<Detailpage />} />
         <Route path="/Mypage" element={<Mypage />} />
+        <Route path="/Resultpage" element={<Resultpage />} />
       </Routes>
     </Router>
   );

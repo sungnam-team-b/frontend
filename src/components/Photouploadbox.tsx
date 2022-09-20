@@ -1,6 +1,8 @@
+import { responsiveFontSizes } from "@mui/material";
 import axios from "axios";
 import { url } from "inspector";
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 // 사진 업로드 박스 -> 드래그앤 드롭, 누르면 파일 업로드 기능
 const ALLOW_FILE_EXTENSION = "jpg,jpeg,png";
@@ -8,6 +10,9 @@ const FILE_SIZE_MAX_LIMIT = 5 * 1024 * 1024; // 5MB
 function Photouploadbox() {
   const [file, setFileImage] = useState("");
   const [filename, setFile] = useState<File>();
+  const navigate = useNavigate();
+
+  let user_id = "00000000000000000000000000000001";
   const saveFileImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
     setFileImage(URL.createObjectURL(e.target.files[0]));
@@ -43,36 +48,25 @@ function Photouploadbox() {
     method: "POST",
     body: formdata,
   };
-  let user_id = "00000000000000000000000000000001";
 
   const photoUpload = async () => {
     if (filename !== undefined) {
       try {
         const formData = new FormData();
-        // console.log(file);
-        console.log(user_id);
-        console.log(filename);
 
         formData.append("user_id", user_id);
         formData.append("filename", filename);
-        console.log(formData.get("filename"));
-        // fetch("http://localhost:8080/v1/api/animals/user", requestOptions)
-        //   .then(response => console.log(response))
-        //   .then(result => console.log(result))
-        //   .catch(error => console.log("error", error));
-        // const result = await axios
-        //   .post("http://localhost:8080/v1/api/animals/user", formData)
-        //   .then(response => alert(response));
-
-        await axios({
-          method: "post",
-          url: "http://localhost:8080/v1/api/animals/user",
-          data: formData,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }).then(response => console.log(response.data));
+        await axios
+          .post("http://localhost:8080/v1/api/animals/user", formData)
+          .then(response => navigate("/Resultpage", { state: response.data }));
+        // const res = await axios({
+        //   method: "post",
+        //   url: "http://localhost:8080/v1/api/animals/user",
+        //   data: formData,
+        // }).then(response => navigate("/Resultpage", { state: response.data }));
         // // 파일 업로드 성공
+        // console.log(res);
+        //navigate("/Resultpage", { state: response.data })
       } catch (e) {
         console.error(e);
         alert((e as { message: string }).message);

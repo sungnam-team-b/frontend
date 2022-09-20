@@ -30,7 +30,7 @@ function Topmenu() {
   return (
     <nav>
       {/* MODE: WEB */}
-      <div className="absolute md:-right-0 md:flex flex-row-reverse text-white">
+      <div className="absolute md:-right-0 md:flex flex-row-reverse grid-cols-2 text-white">
         <div className="mr-12 mt-menubuttonspacingt3">
           <button onClick={handleTheme}>
             <img className="h-4 w-4" src={dark} alt="dark" />
