@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 // 랭킹 박스
 
-var rankjson = { 0: { rank: 0, alias: 0, similarity: 0 } };
+var rankjson = { 0: { rank: 0, alias: 0, similarity: 0, name: "" } };
 
 function Rankbox() {
   const [ranks, setRanks] = useState(null);
@@ -18,6 +18,7 @@ function Rankbox() {
         await setLoading(true);
         const response = await axios.get("http://localhost:8080/v1/api/animals/rank");
         rankjson = await response.data;
+        console.log(rankjson);
       } catch (e: any) {
         console.log(e);
       }
@@ -27,10 +28,11 @@ function Rankbox() {
   }, []);
 
   var rankmap = Object.values(rankjson).map(ranking => (
-    <div className="grid grid-cols-3 gap-12 mt-2" key={ranking.rank}>
-      <div>{ranking.rank + 1}등</div>
-      <div>{ranking.alias}</div>
-      <div>{ranking.similarity}%</div>
+    <div className="flex flex-row mt-2" key={ranking.rank}>
+      <div className="mr-[2rem]">{ranking.rank + 1}등</div>
+      <div className="mr-[2rem]">{ranking.alias}</div>
+      <div className="mr-[2rem]">{ranking.name}</div>
+      <div className="">{ranking.similarity}%</div>
     </div>
   ));
 
