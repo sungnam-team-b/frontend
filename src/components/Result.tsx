@@ -8,8 +8,9 @@ type MainProps = {
   children: React.ReactNode; // 👈️ type children
 };
 
-function Result() {
-  return <Chart></Chart>;
+function Result(props: any) {
+  props = props["nums"];
+  return <Chart nums2={props}></Chart>;
 }
 
 export default Result;

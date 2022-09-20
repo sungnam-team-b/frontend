@@ -8,10 +8,29 @@ import Topmenu from "@components/Topmenu";
 import Urlbutton from "@components/Urlbutton";
 import great1 from "@images/great1.png";
 import result from "@images/result.png";
-
-import React from "react";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function Resultpage() {
+  // 한
+  const data: any = {
+    mouse: "쥐",
+    cow: "소",
+    tiger: "호랑이",
+    rabbit: "토끼",
+    dragon: "용",
+    snake: "뱀",
+    horse: "말",
+    sheep: "양",
+    monkey: "원숭이",
+    chicken: "닭",
+    dog: "개",
+    pig: "돼지",
+  };
+  const { state } = useLocation();
+  const keys = Object.keys(state.result);
+  console.log(state.userimage);
+  console.log(state.animalimage);
   return (
     <Mainbackground>
       <div className="absolute z-40 w-full">
@@ -26,23 +45,25 @@ function Resultpage() {
             <div className="flex flex-row mt-14">
               <div className="w-[9rem]">
                 <div className="flex  grid place-items-center	mt-[12.5rem] text-xs ml-20  ">
-                  <div>호랑이</div>
-                  <div>용</div>
-                  <div>돼지</div>
+                  <div>{data[keys[0]]}</div>
+                  <div>{data[keys[1]]}</div>
+                  <div>{data[keys[2]]}</div>
                 </div>
               </div>
               <div className="w-[12rem]">
                 <div className=" text-center grid place-items-center flex flex-column mt-2">
                   <div className="flex flex-row">
-                    <img className="w-[5rem] mr-11" src={great1}></img>
-                    <img className="w-[5rem]" src={great1}></img>
+                    <img className="w-[5rem] mr-11" src={state.userimage}></img>
+                    <img className="w-[5rem]" src={state.animalimage}></img>
                   </div>
 
                   <div>
-                    <p className="text-sm mt-2">호랑이</p>
+                    <p className="text-sm mt-2">{data[keys[0]]}</p>
                     <p className="text-xs text-slate-500">255523명중 120등</p>
                   </div>
-                  <Result></Result>
+                  <div>
+                    <Result nums={state.result}></Result>
+                  </div>
                   <div className="flex flex-column">
                     <div>
                       <Discriptionbutton></Discriptionbutton>
@@ -62,10 +83,10 @@ function Resultpage() {
                 </div>
               </div>
               <div className="w-[9rem]">
-                <div className="flex  grid place-items-center mt-[12.5rem] text-xs mr-20">
-                  <div>80%</div>
-                  <div>60%</div>
-                  <div>50%</div>
+                <div className="flex grid place-items-center mt-[12.5rem] text-xs mr-20">
+                  <div>{state.result[keys[0]]}%</div>
+                  <div>{state.result[keys[1]]}%</div>
+                  <div>{state.result[keys[2]]}%</div>
                 </div>
               </div>
             </div>
