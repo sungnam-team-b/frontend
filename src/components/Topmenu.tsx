@@ -30,7 +30,7 @@ function Topmenu() {
   return (
     <nav>
       {/* MODE: WEB */}
-      <div className="absolute md:-right-0 md:flex flex-row-reverse text-white">
+      <div className="absolute md:-right-0 md:flex flex-row-reverse grid-cols-2 text-white">
         <div className="mr-12 mt-menubuttonspacingt3">
           <button onClick={handleTheme}>
             <img className="h-4 w-4" src={dark} alt="dark" />
@@ -43,19 +43,20 @@ function Topmenu() {
         </div>
         <div className="mr-menuspacing mt-menubuttonspacingt2">게스트</div>
         <div className="mr-menuspacing mt-menubuttonspacingt2">비회원</div>
-
-        <button
-          className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
-          onClick={() => navigate("/Intropage")}
-        >
-          운세
-        </button>
-        <button
-          className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
-          onClick={() => navigate("/Rankpage")}
-        >
-          순위
-        </button>
+        <div>
+          <button
+            className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
+            onClick={() => navigate("/Intropage")}
+          >
+            운세
+          </button>
+          <button
+            className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
+            onClick={() => navigate("/Rankpage")}
+          >
+            순위
+          </button>
+        </div>
       </div>
     </nav>
   );
