@@ -2,8 +2,6 @@ import React from "react";
 import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { TextField, Button } from "@material-ui/core";
-import { is } from "immer/dist/internal";
 import { useNavigate } from "react-router-dom";
 
 // 회원가입 박스
@@ -33,7 +31,7 @@ function Signupbox() {
         "이미 등록된 아이디 입니다.",
         async username => (await checkID("username", username)) === 1,
       )
-      .required("아이디를 입력하세요."),
+      .required("아이디를 입력하세요. (로그인 시 필요합니다.)"),
     password: Yup.string()
       .min(8, "비밀번호는 최소 8자리 이상입니다.")
       .max(16, "비밀번호는 최대 16자리입니다.")
@@ -106,108 +104,108 @@ function Signupbox() {
       validateOnMount={true}
     >
       {({ values, handleSubmit, handleChange, errors }) => (
-        <div className="box-border rounded-3xl h-72 w-72 p-4">
-          <form onSubmit={handleSubmit} autoComplete="off">
-            <div className="flex justify-center items-center flex-col">
-              <div className="flex justify-center">회원가입</div>
+        <form onSubmit={handleSubmit} autoComplete="off">
+          <div className="top-0 flex justify-center items-center flex-col">
+            <div className="absolute inset-4 h-12 flex justify-center text-white">회원가입</div>
+            <div className="top-5">
               <div className="grid grid-rows-5">
-                <div className="mb-2 mt-2">
+                <div className="mb-1.5 mt-1.5">
                   <div className="grid grid-cols-4">
                     <div className="text-sm font-medium text-black">이메일</div>
                     <div className="col-span-3 mt-1 text-xxs font-medium text-red-600">
                       {errors.email}
                     </div>
                   </div>
-                  <TextField
+                  <input
                     value={values.email}
                     onChange={handleChange}
                     type="email"
                     id="email"
-                    className=" w-52 sm:w-80 p-2.5"
+                    className=" w-80 p-2.5 rounded-md"
                     placeholder="Email address"
                     required
                   />
                 </div>
-                <div className="mb-2 mt-2">
+                <div className="mb-1.5 mt-1">
                   <div className="grid grid-cols-4">
                     <div className="text-sm font-medium text-black">아이디</div>
                     <div className="col-span-3 mt-1 text-xxs font-medium text-red-600">
                       {errors.username}
                     </div>
                   </div>
-                  <TextField
+                  <input
                     value={values.username}
                     onChange={handleChange}
                     type="username"
                     id="username"
-                    className=" w-52 sm:w-80 p-2.5"
+                    className="w-80 p-2.5 rounded-md"
                     placeholder="user name"
                     required
                   />
                 </div>
-                <div className="mb-2 mt-2">
+                <div className="mb-1.5 mt-1">
                   <div className="grid grid-cols-4">
                     <div className="text-sm font-medium text-black">비밀번호</div>
                     <div className="col-span-3 mt-1 text-xxs font-medium text-red-600">
                       {errors.password}
                     </div>
                   </div>
-                  <TextField
+                  <input
                     value={values.password}
                     onChange={handleChange}
                     type="password"
                     id="password"
-                    className=" w-52 sm:w-80 p-2.5"
+                    className="w-80 p-2.5 rounded-md"
                     placeholder="•••••••••"
                     required
                   />
                 </div>
-                <div className="mb-2 mt-2">
+                <div className="mb-1.5 mt-1">
                   <div className="grid grid-cols-4">
                     <div className="text-sm font-medium text-black">비밀번호 확인</div>
                     <div className="col-span-3 mt-1 text-xxs font-medium text-red-600">
                       {errors.passwordConfirm}
                     </div>
                   </div>
-                  <TextField
+                  <input
                     value={values.passwordConfirm}
                     onChange={handleChange}
                     type="password"
                     id="passwordConfirm"
-                    className=" w-52 sm:w-80 p-2.5"
+                    className="w-80 p-2.5 rounded-md"
                     placeholder="•••••••••"
                     required
                   />
                 </div>
-                <div className="mb-2 mt-2">
+                <div className="mb-1.5 mt-1">
                   <div className="grid grid-cols-4">
                     <div className="text-sm font-medium text-black">닉네임</div>
                     <div className="col-span-3 mt-1 text-xxs font-medium text-red-600">
                       {errors.alias}
                     </div>
                   </div>
-                  <TextField
+                  <input
                     value={values.alias}
                     onChange={handleChange}
                     type="string"
                     id="alias"
-                    className=" w-52 sm:w-80 p-2.5"
+                    className="w-80 p-2.5 rounded-md"
                     placeholder="user name"
                     required
                   />
                 </div>
               </div>
             </div>
-            <div className="flex justify-center">
-              <button
-                className="mt-buttonspacingt bg-green-500 p-4 pl-12 pr-12 rounded-3xl z-50"
-                type="submit"
-              >
-                회원가입
-              </button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div className="flex justify-center">
+            <button
+              className="mt-buttonspacingtop bg-green-500 p-4 pl-12 pr-12 rounded-3xl z-50"
+              type="submit"
+            >
+              회원가입
+            </button>
+          </div>
+        </form>
       )}
     </Formik>
   );
