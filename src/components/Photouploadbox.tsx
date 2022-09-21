@@ -12,7 +12,7 @@ function Photouploadbox() {
   const [filename, setFile] = useState<File>();
   const navigate = useNavigate();
 
-  let user_id = "00000000000000000000000000000001";
+  let user_id = "b896dfb0276e47ceb8dc94d84281c845";
   const saveFileImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
     setFileImage(URL.createObjectURL(e.target.files[0]));

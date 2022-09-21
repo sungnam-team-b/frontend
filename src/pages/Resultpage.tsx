@@ -10,6 +10,7 @@ import great1 from "@images/great1.png";
 import result from "@images/result.png";
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import html2canvas from "html2canvas";
 
 function Resultpage() {
   // 한
@@ -31,6 +32,23 @@ function Resultpage() {
   const keys = Object.keys(state.result);
   console.log(state.userimage);
   console.log(state.animalimage);
+
+  const onCapture = () => {
+    console.log("onCapture");
+    html2canvas(document.getElementById("div") as HTMLElement).then(canvas => {
+      onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
+    });
+  };
+
+  const onSaveAs = (uri: any, filename: any) => {
+    console.log("onSaveAs");
+    var link = document.createElement("a");
+    link.href = uri;
+    link.download = filename;
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <Mainbackground>
       <div className="absolute z-40 w-full">
@@ -39,8 +57,9 @@ function Resultpage() {
         <div className="h-header"></div>
         <div className="h-body grid place-items-center">
           <div
-            className="absolute w-[30rem] h-[28rem] bg-mainorange bg-cover"
+            className="absolute w-[30rem] h-[28rem] bg-mainorange bg-cover "
             style={{ background: `url(${result})`, backgroundSize: "100%" }}
+            id="div"
           >
             <div className="flex flex-row mt-14">
               <div className="w-[9rem]">
@@ -77,7 +96,7 @@ function Resultpage() {
                     <div className="flex flex-column">
                       <Kakaobutton>kakao</Kakaobutton>
                       <Urlbutton>url</Urlbutton>
-                      <Picturebutton>사진</Picturebutton>
+                      <Picturebutton onClick={() => onCapture()}>사진</Picturebutton>
                     </div>
                   </div>
                 </div>

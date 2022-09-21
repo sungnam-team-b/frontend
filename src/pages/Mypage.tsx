@@ -5,6 +5,7 @@ import Slider from "@components/Slider";
 import Slider2 from "@components/Slider2";
 import Mainbackground3 from "@components/Mainbackground3";
 import Topmenu from "@components/Topmenu";
+import Backbutton from "@components/Backbutton";
 
 function Mypage() {
   return (
@@ -24,6 +25,9 @@ function Mypage() {
           </div>
 
           <div className=" h-footer"></div>
+          <div className="absolute inset-x-0 bottom-menubuttonspacing4 flex justify-center ">
+            <Backbutton />
+          </div>
         </div>
       </Mainbackground3>
     </div>
