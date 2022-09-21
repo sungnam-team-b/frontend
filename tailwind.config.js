@@ -64,6 +64,7 @@ module.exports = {
 
         buttonspacingt2: "20vh",
         buttonspacingt: "12vh",
+        buttonspacingtop: "7vh",
         boxborder: "50vh",
 
         spc: "40vh",
