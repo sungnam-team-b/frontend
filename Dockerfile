@@ -1,12 +1,10 @@
-FROM node:14.19.1
-
+FROM node:12 AS builder
 WORKDIR /app
+COPY . .
+RUN yarn build
 
-ENV PATH /app/node_modules/.bin:$PATH
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
+COPY --from=builder /app/build .
 
-COPY package.json /app/package.json
-RUN npm install 
-RUN npm install react-scripts@3.0.1 -g
-
-
-CMD ["npm", "start"]
+CMD ["nginx","-g","daemon off;"]
