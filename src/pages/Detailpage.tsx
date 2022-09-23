@@ -52,6 +52,8 @@ function Detailpage() {
       "삶이란 서바이벌이고, 경쟁이 생길 수 있는 시기다. 경쟁을 귀찮게 생각해서 피하려 하기보다 오히려 기회로 삼아서 발전의 토대로 만들어야 한다. 정면으로 승부를 내자.";
   }
   console.log(luck);
+  console.log(state.description);
+  console.log(state.great_url);
 
   return (
     <div>
