@@ -135,8 +135,10 @@ function Signinbox() {
             </div>
             <div className="grid grid-cols-2 gap-8 items-center ml-rt mt-loginspacing1 z-50">
               <div className="text-white">Is this your first visit?</div>
-              <div className="text-blue-300">
-                <button onClick={() => navigate("/Signuppage")}>Sign up</button>
+              <div className="text-blue-300 z-50">
+                <button className="z-60 h-12 w-12" onClick={() => navigate("/Signuppage")}>
+                  Sign up
+                </button>
               </div>
             </div>
           </form>
