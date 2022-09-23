@@ -3,7 +3,6 @@ import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 // 회원가입 박스
 
 function Signupbox() {
@@ -63,12 +62,14 @@ function Signupbox() {
   const submit = async (values: any) => {
     const { email, username, password, alias } = values;
     try {
-      await axios.post("http://localhost:8080/v1/api/users/", {
-        email,
-        username,
-        password,
-        alias,
-      });
+      await axios
+        .post("http://localhost:8080/v1/api/users/", {
+          email,
+          username,
+          password,
+          alias,
+        })
+        .then(res => console.log(res));
       alert("회원가입 성공");
       setTimeout(() => {
         // 회원가입 후 이동

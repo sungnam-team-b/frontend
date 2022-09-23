@@ -22,7 +22,7 @@ function Resultpage() {
     dragon: "용",
     snake: "뱀",
     horse: "말",
-    sheep: "양",
+    lamb: "양",
     monkey: "원숭이",
     chicken: "닭",
     dog: "개",
@@ -77,8 +77,7 @@ function Resultpage() {
                   </div>
 
                   <div>
-                    <p className="text-sm mt-2">{data[keys[0]]}</p>
-                    <p className="text-xs text-slate-500">255523명중 120등</p>
+                    <p className="text-sm mt-2 mb-2">{data[keys[0]]}</p>
                   </div>
                   <div>
                     <Result nums={state.result}></Result>
