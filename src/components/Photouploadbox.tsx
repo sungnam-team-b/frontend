@@ -80,7 +80,6 @@ function Photouploadbox() {
     if (filename !== undefined) {
       try {
         const formData = new FormData();
-
         //formData.append("user_id", user_id);
         formData.append("filename", filename);
         const res = await axios.post(
