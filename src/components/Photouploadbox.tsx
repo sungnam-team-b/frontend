@@ -1,6 +1,8 @@
+import { getAI } from "@slices/ai";
 import axios from "axios";
 import { url } from "inspector";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import Loading from "./Loading";
 
@@ -16,40 +18,45 @@ function Photouploadbox() {
 
   const navigate = useNavigate();
 
-  let user_id = "00000000000000000000000000000001";
+  const user_id = useSelector<any>(state => state.uuid.value);
   var cnt = 0;
 
-  const aiSetting = async () => {
-    if (count === 0) {
+  // const aiSetting = async () => {
+  //   if (count === 0) {
+  //     await axios
+  //       .get(`http://localhost:8080/v1/api/animals/models`)
+  //       .then(res => {
+  //         if (res.data.test === "succes") {
+  //           console.log("AI set");
+  //         }
+  //       })
+  //       .catch(error => console.log("AI already set"));
+  //   } else {
+  //     console.log("AI already set");
+  //   }
+  // };
+  // useEffect(() => {
+  //   console.log("useEffect!!", count);
+  //   if (count === 0) {
+  //     setAI();
+  //   }
+  // }, []);
+  const dispatch = useDispatch();
+  const aiState = useSelector<any>(state => state.ai.value);
+  const setAI = async () => {
+    if (aiState === 1) {
+      console.log("AI already set");
+    } else {
       await axios
         .get(`http://localhost:8080/v1/api/animals/models`)
         .then(res => {
           if (res.data.test === "succes") {
-            console.log("AI set");
+            dispatch(getAI(1)); // ai set 완료
           }
         })
-        .catch(error => console.log("AI already set"));
-    } else {
-      console.log("AI already set");
+        .catch(error => console.log("sdfs")); // 이미 ai set
     }
   };
-  useEffect(() => {
-    console.log("useEffect!!", count);
-    if (count === 0) {
-      aiSetting();
-    }
-  }, []);
-
-  //   if (cnt === 0) {
-  //     await axios.get(`http://localhost:8080/v1/api/animals/models`).then(res => {
-  //       if (res.data.test === "success") {
-  //         console.log("good");
-  //       }
-  //     });
-  //   } else {
-  //     cnt = 1;
-  //   }
-  // };
 
   const saveFileImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
@@ -130,8 +137,7 @@ function Photouploadbox() {
         // console.log(res);
         //navigate("/Resultpage", { state: response.data })
       } catch (e) {
-        console.error(e);
-        alert((e as { message: string }).message);
+        alert("로그인 해주세요");
       }
     }
   };
