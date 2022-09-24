@@ -80,7 +80,6 @@ function Photouploadbox() {
     if (filename !== undefined) {
       try {
         const formData = new FormData();
-
         //formData.append("user_id", user_id);
         formData.append("filename", filename);
         const res = await axios.post(
@@ -107,8 +106,9 @@ function Photouploadbox() {
               })
               .catch(error => {
                 // 안됐을때
-                console.log("err");
+                console.log(error);
                 clearInterval(timer);
+                setLoading(false);
               });
           };
           const timer = setInterval(getAnswer, 2000);

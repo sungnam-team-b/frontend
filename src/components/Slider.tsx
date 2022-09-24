@@ -64,7 +64,7 @@ function Slider() {
   const greatslider = greats.map(great => (
     <SwiperSlide>
       <div
-        className="absolute w-[32rem] h-[32rem] bg-cover grid place-items-center"
+        className="absolute w-[32rem] h-[32rem] -bottom-0 md:-bottom-4 bg-cover grid place-items-center"
         style={{ background: `url(${result})`, backgroundSize: "100%" }}
         onClick={() => navigate("/Detailpage", { state: great })}
       >
@@ -96,7 +96,7 @@ function Slider() {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiper"
+        className="mySwiper z-50"
       >
         {greatslider}
       </Swiper>
