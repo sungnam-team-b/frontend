@@ -8,14 +8,18 @@ import { ClassNames } from "@emotion/react";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { getUserId } from "@slices/uuid";
+import { useDispatch } from "react-redux";
 
 function Signinbox() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const JWT_EXPIRY_TIME = 24 * 3600 * 1000 * 7; // 만료 시간 (24시간 밀리 초로 표현)
   const data = {
     email: "",
     password: "",
   };
+  var uuid = "";
   const submit = async (values: any) => {
     const { username, password } = values;
 
@@ -26,8 +30,8 @@ function Signinbox() {
       });
 
       if (result) {
-        console.log(result.data);
-        console.log(result);
+        uuid = result.data.uuid;
+        dispatch(getUserId(uuid));
         alert("로그인 완료");
         navigate("/Mainpage");
         onLoginSuccess(result);
@@ -61,14 +65,6 @@ function Signinbox() {
     setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 60000);
   };
 
-  const styles = {
-    root: {
-      background: "black",
-    },
-    input: {
-      color: "white",
-    },
-  };
   return (
     <Formik
       initialValues={{
