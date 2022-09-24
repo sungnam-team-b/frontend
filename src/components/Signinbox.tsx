@@ -20,10 +20,13 @@ function Signinbox() {
     const { username, password } = values;
 
     try {
-      const result = await axios.post("http://localhost:8080/v1/api/users/auth", {
-        username,
-        password,
-      });
+      const result = await axios.post(
+        "http://ec2-3-35-194-196.ap-northeast-2.compute.amazonaws.com:8080/v1/api/users/auth",
+        {
+          username,
+          password,
+        },
+      );
 
       if (result) {
         console.log(result.data);
@@ -44,7 +47,10 @@ function Signinbox() {
 
   const onSilentRefresh = () => {
     axios
-      .post("http://localhost:8080/v1/api/users/auth", data)
+      .post(
+        "http://ec2-3-38-28-71.ap-northeast-2.compute.amazonaws.com:8080/v1/api/users/auth",
+        data,
+      )
       .then(onLoginSuccess)
       .catch(error => {
         // ... 로그인 실패 처리

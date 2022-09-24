@@ -46,7 +46,7 @@ function Slider2() {
         await setAnimals(null);
         await setLoading(true);
         const response = await axios.get(
-          "http://localhost:8080/v1/api/animals/e10140c5796c456facef4827acb0ba9c/mypage",
+          "http://ec2-3-35-194-196.ap-northeast-2.compute.amazonaws.com:8080/v1/api/animals/e10140c5796c456facef4827acb0ba9c/mypage",
         );
         mypagedata = response.data;
         console.log(mypagedata);

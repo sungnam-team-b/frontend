@@ -56,7 +56,10 @@ function Photouploadbox() {
         formData.append("user_id", user_id);
         formData.append("filename", filename);
         await axios
-          .post("http://localhost:8080/v1/api/animals/user", formData)
+          .post(
+            "http://ec2-3-35-194-196.ap-northeast-2.compute.amazonaws.com:8080/v1/api/animals/user",
+            formData,
+          )
           .then(response => navigate("/Resultpage", { state: response.data }));
         // const res = await axios({
         //   method: "post",

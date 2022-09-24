@@ -16,7 +16,9 @@ function Rankbox() {
         await setError(null);
         await setRanks(null);
         await setLoading(true);
-        const response = await axios.get("http://localhost:8080/v1/api/animals/rank");
+        const response = await axios.get(
+          "http://ec2-3-35-194-196.ap-northeast-2.compute.amazonaws.com:8080/v1/api/animals/rank",
+        );
         rankjson = await response.data;
         console.log(rankjson);
       } catch (e: any) {
