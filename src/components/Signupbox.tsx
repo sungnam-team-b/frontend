@@ -3,7 +3,6 @@ import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 // 회원가입 박스
 
 function Signupbox() {
@@ -63,20 +62,18 @@ function Signupbox() {
   const submit = async (values: any) => {
     const { email, username, password, alias } = values;
     try {
-      await axios.post(
-        "http://ec2-3-35-194-196.ap-northeast-2.compute.amazonaws.com:8080/v1/api/users/",
-        {
+      await axios
+        .post("http://ec2-3-35-165-113.ap-northeast-2.compute.amazonaws.com:8080/api/v1/users/", {
           email,
           username,
           password,
           alias,
-        },
-      );
+        })
+        .then(res => console.log("성공"));
       alert("회원가입 성공");
       setTimeout(() => {
         // 회원가입 후 이동
         navigate("/");
-        console.log(values);
       }, 2000);
     } catch (e) {
       console.log("error");

@@ -1,7 +1,10 @@
+import { getAI } from "@slices/ai";
 import axios from "axios";
 import { url } from "inspector";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import Loading from "./Loading";
 
 // 사진 업로드 박스 -> 드래그앤 드롭, 누르면 파일 업로드 기능
 const ALLOW_FILE_EXTENSION = "jpg,jpeg,png";
@@ -9,13 +12,45 @@ const FILE_SIZE_MAX_LIMIT = 5 * 1024 * 1024; // 5MB
 function Photouploadbox() {
   const [file, setFileImage] = useState("");
   const [filename, setFile] = useState<File>();
+  const [loading, setLoading] = useState(false);
+  const [count, setCount] = useState(0);
+  const countUp = () => setCount(count + 1);
+
   const navigate = useNavigate();
 
-  let user_id = "b896dfb0276e47ceb8dc94d84281c845";
+  const user_id = useSelector<any>(state => state.uuid.value);
+  var cnt = 0;
+
+  useEffect(() => {
+    console.log("useEffect!!", count);
+    if (count === 0) {
+      setAI();
+    }
+  }, []);
+  const dispatch = useDispatch();
+  const aiState = useSelector<any>(state => state.ai.value);
+  const setAI = async () => {
+    if (aiState === 1) {
+      console.log("AI already set");
+    } else {
+      await axios
+        .get(
+          `http://ec2-3-35-165-113.ap-northeast-2.compute.amazonaws.com/:8080/api/v1/animals/models`,
+        )
+        .then(res => {
+          if (res.data.test === "succes") {
+            dispatch(getAI(1)); // ai set 완료
+          }
+        })
+        .catch(error => dispatch(getAI(1))); // 이미 ai set
+    }
+  };
+
   const saveFileImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
     setFileImage(URL.createObjectURL(e.target.files[0]));
     photoUploadValid(e);
+    countUp();
   };
   const photoUploadValid = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.currentTarget;
@@ -42,36 +77,47 @@ function Photouploadbox() {
     setFile(files);
   };
 
-  let formdata = new FormData();
-  let requestOptions = {
-    method: "POST",
-    body: formdata,
-  };
-
+  var task_id = "";
   const photoUpload = async () => {
     if (filename !== undefined) {
       try {
         const formData = new FormData();
 
-        formData.append("user_id", user_id);
+        //formData.append("user_id", user_id);
         formData.append("filename", filename);
-        await axios
-          .post(
-            "http://ec2-3-35-194-196.ap-northeast-2.compute.amazonaws.com:8080/v1/api/animals/user",
-            formData,
-          )
-          .then(response => navigate("/Resultpage", { state: response.data }));
-        // const res = await axios({
-        //   method: "post",
-        //   url: "http://localhost:8080/v1/api/animals/user",
-        //   data: formData,
-        // }).then(response => navigate("/Resultpage", { state: response.data }));
-        // // 파일 업로드 성공
-        // console.log(res);
-        //navigate("/Resultpage", { state: response.data })
+        const res = await axios.post(
+          `http://localhost:8080/v1/api/animals/user/${user_id}`,
+          formData,
+        );
+        task_id = res.data.task_id;
+        var picuuid = res.data.picuuid;
+        const picFormData = new FormData();
+        picFormData.append("picuuid", picuuid);
+        var count = 0;
+        if (task_id !== "") {
+          setLoading(true);
+          const getAnswer = async () => {
+            await axios
+              .post(
+                `http://ec2-3-35-165-113.ap-northeast-2.compute.amazonaws.com:8080/api/v1/animals/user/${user_id}/tasks/${task_id}`,
+                picFormData,
+              )
+              .then(res => {
+                setLoading(false);
+                navigate("/Resultpage", { state: res.data });
+                clearInterval(timer);
+              })
+              .catch(error => {
+                // 안됐을때
+                console.log("err");
+                clearInterval(timer);
+              });
+          };
+          const timer = setInterval(getAnswer, 2000);
+          return () => clearInterval(timer);
+        }
       } catch (e) {
-        console.error(e);
-        alert((e as { message: string }).message);
+        alert("로그인 해주세요");
       }
     }
   };
@@ -86,8 +132,11 @@ function Photouploadbox() {
             id="userImage"
             src={file || "data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA="}
             alt="userImage"
-            className="absolute justify-center rounded-lg z-50 w-72 h-72"
+            className="absolute justify-center rounded-lg z-0 w-72 h-72"
           />
+          <div className="absolute justify-center rounded-lg z-50 w-48 h-48">
+            {loading ? <Loading /> : null}
+          </div>
           <svg
             aria-hidden="true"
             className="mb-3 w-10 h-10 text-gray-400"

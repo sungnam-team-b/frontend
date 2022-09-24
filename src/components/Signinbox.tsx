@@ -5,17 +5,21 @@ import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import { ClassNames } from "@emotion/react";
-
+import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { getUserId } from "@slices/uuid";
+import { useDispatch } from "react-redux";
 
 function Signinbox() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const JWT_EXPIRY_TIME = 24 * 3600 * 1000 * 7; // 만료 시간 (24시간 밀리 초로 표현)
   const data = {
     email: "",
     password: "",
   };
+  var uuid = "";
   const submit = async (values: any) => {
     const { username, password } = values;
 
@@ -29,8 +33,8 @@ function Signinbox() {
       );
 
       if (result) {
-        console.log(result.data);
-        console.log(result);
+        uuid = result.data.uuid;
+        dispatch(getUserId(uuid));
         alert("로그인 완료");
         navigate("/Mainpage");
         onLoginSuccess(result);
@@ -40,15 +44,14 @@ function Signinbox() {
     } catch (e) {
       alert("아이디 혹은 비밀번호를 확인해주세요.");
       // 서버에서 받은 에러 메시지 출력
-      console.log(username);
-      console.log(password);
     }
   };
 
   const onSilentRefresh = () => {
     axios
+
       .post(
-        "http://ec2-3-38-28-71.ap-northeast-2.compute.amazonaws.com:8080/v1/api/users/auth",
+        "http://ec2-3-35-165-113.ap-northeast-2.compute.amazonaws.com:8080/api/v1/users/auth",
         data,
       )
       .then(onLoginSuccess)
@@ -69,14 +72,6 @@ function Signinbox() {
     setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 60000);
   };
 
-  const styles = {
-    root: {
-      background: "black",
-    },
-    input: {
-      color: "white",
-    },
-  };
   return (
     <Formik
       initialValues={{
@@ -141,8 +136,10 @@ function Signinbox() {
             </div>
             <div className="grid grid-cols-2 gap-8 items-center ml-rt mt-loginspacing1 z-50">
               <div className="text-white">Is this your first visit?</div>
-              <div className="text-blue-300">
-                <button onClick={() => navigate("/Signuppage")}>Sign up</button>
+              <div className="text-blue-300 z-50">
+                <button className="z-60 h-12 w-12" onClick={() => navigate("/Signuppage")}>
+                  Sign up
+                </button>
               </div>
             </div>
           </form>

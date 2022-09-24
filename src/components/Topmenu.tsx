@@ -30,13 +30,75 @@ function Topmenu() {
   return (
     <nav>
       {/* MODE: WEB */}
-      <div className="absolute md:-right-0 md:flex flex-row-reverse grid-cols-2 text-white">
-        <div className="mr-12 mt-menubuttonspacingt3">
-          <button onClick={handleTheme}>
-            <img className="h-4 w-4" src={dark} alt="dark" />
+      <div className="hidden md:absolute md:top-0 md:-right-0 md:flex md:grid-cols-2 text-white">
+        <div>
+          <button
+            className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
+            onClick={() => navigate("/Mypage")}
+          >
+            마이페이지
+          </button>
+          <button
+            className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
+            onClick={() => navigate("/Rankpage")}
+          >
+            순위
+          </button>
+          <button
+            className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
+            onClick={() => navigate("/Intropage")}
+          >
+            운세
           </button>
         </div>
-        <div className="mr-menuspacing mt-menubuttonspacingt3">
+        <div className="grid grid-cols-4 text-center">
+          <div className="mt-menubuttonspacingt5 md:mt-menubuttonspacingt2">비회원</div>
+          <div className="mt-menubuttonspacingt5 md:mt-menubuttonspacingt2">게스트</div>
+          <div className="mt-menubuttonspacingt6 md:mt-menubuttonspacingt3">
+            <button
+              onClick={() => {
+                navigate("/");
+                alert("로그아웃 되었습니다!");
+              }}
+            >
+              <img className="h-4 w-4" src={logout} alt="logout" />
+            </button>
+          </div>
+          <div className="mr-10 mt-menubuttonspacingt6 md:mt-menubuttonspacingt3">
+            <button onClick={handleTheme}>
+              <img className="h-4 w-4" src={dark} alt="dark" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* MODE: MOBILE */}
+      <div className="md:hidden mt-menuspacing absolute flex -right-0 justify-center text-white text-xs z-50">
+        {/* 마이페이지 */}
+        <button
+          className="mr-menuspacing mt-menubuttonspcaingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
+          onClick={() => navigate("/Mypage")}
+        >
+          마이페이지{" "}
+        </button>
+
+        {/* 순위 */}
+        <button
+          className="mr-menuspacing mt-menubuttonspcaingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
+          onClick={() => navigate("/Rankpage")}
+        >
+          순위
+        </button>
+
+        {/* 운세 */}
+        <button
+          className="mr-menuspacing mt-menubuttonspcaingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
+          onClick={() => navigate("/Intropage")}
+        >
+          운세
+        </button>
+        {/* 로그아웃 */}
+        <div className="mt-menubuttonspacingt6 md:mt-menubuttonspacingt3">
           <button
             onClick={() => {
               navigate("/");
@@ -46,28 +108,12 @@ function Topmenu() {
             <img className="h-4 w-4" src={logout} alt="logout" />
           </button>
         </div>
-        <div className="mr-menuspacing mt-menubuttonspacingt2">게스트</div>
-        <div className="mr-menuspacing mt-menubuttonspacingt2">비회원</div>
-
-        <button
-          className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
-          onClick={() => navigate("/Intropage")}
-        >
-          운세
-        </button>
-        <button
-          className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
-          onClick={() => navigate("/Rankpage")}
-        >
-          순위
-        </button>
-
-        <button
-          className="mr-menuspacing mt-menubuttonspacingt bg-indigo-500 p-2 pr-4 pl-4 rounded-2xl"
-          onClick={() => navigate("/Mypage")}
-        >
-          마이페이지
-        </button>
+        {/* 다크모드 */}
+        <div className="ml-3 mr-5 mt-menubuttonspacingt6 md:mt-menubuttonspacingt3">
+          <button onClick={handleTheme}>
+            <img className="h-4 w-4" src={dark} alt="dark" />
+          </button>
+        </div>
       </div>
     </nav>
   );

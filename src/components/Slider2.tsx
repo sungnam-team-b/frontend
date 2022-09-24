@@ -23,21 +23,25 @@ import Urlbutton from "./Urlbutton";
 import Readmorebutton from "./Readmorebutton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-let mypagedata = [
-  {
-    id: 1,
-    similarity: 0,
-    picture_id: { id: 1, picture_url: "", user_id: null },
-    great_id: { name: "", description: "", great_url: "" },
-  },
-];
+interface mydatatype {
+  id: number;
+  similarity: number;
+  picture_id: { id: number; picture_url: string; user_id: string };
+  great_id: { name: string; description: string; great_url: string };
+}
+
+export interface mydatainterface extends Array<mydatatype> {}
+
+let mypagedata: mydatainterface;
 
 function Slider2() {
   const [animals, setAnimals] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const user_id = useSelector<any>(state => state.uuid.value);
 
   useEffect(() => {
     const fetchAnimals = async () => {
@@ -45,9 +49,8 @@ function Slider2() {
         await setError(null);
         await setAnimals(null);
         await setLoading(true);
-        const response = await axios.get(
-          "http://ec2-3-35-194-196.ap-northeast-2.compute.amazonaws.com:8080/v1/api/animals/e10140c5796c456facef4827acb0ba9c/mypage",
-        );
+
+        const response = await axios.get(`http://localhost:8080/v1/api/animals/${user_id}/mypage`);
         mypagedata = response.data;
         console.log(mypagedata);
       } catch (e: any) {
