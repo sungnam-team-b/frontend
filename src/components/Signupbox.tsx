@@ -69,12 +69,11 @@ function Signupbox() {
           password,
           alias,
         })
-        .then(res => console.log(res));
+        .then(res => console.log("성공"));
       alert("회원가입 성공");
       setTimeout(() => {
         // 회원가입 후 이동
         navigate("/");
-        console.log(values);
       }, 2000);
     } catch (e) {
       console.log("error");
