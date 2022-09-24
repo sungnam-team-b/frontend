@@ -114,14 +114,6 @@ function Photouploadbox() {
           const timer = setInterval(getAnswer, 2000);
           return () => clearInterval(timer);
         }
-        // const res = await axios({
-        //   method: "post",
-        //   url: "http://localhost:8080/v1/api/animals/user",
-        //   data: formData,
-        // }).then(response => navigate("/Resultpage", { state: response.data }));
-        // // 파일 업로드 성공
-        // console.log(res);
-        //navigate("/Resultpage", { state: response.data })
       } catch (e) {
         alert("로그인 해주세요");
       }
