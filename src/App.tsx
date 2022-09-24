@@ -17,7 +17,6 @@ import Detailpage from "@pages/Detailpage";
 import Mainpage from "@pages/Mainpage";
 import Intropage from "@pages/Intropage";
 import Loginpage from "@pages/Loginpage";
-import { ThemeProvider } from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {

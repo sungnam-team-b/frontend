@@ -5,7 +5,7 @@ import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import { ClassNames } from "@emotion/react";
-
+import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -37,8 +37,6 @@ function Signinbox() {
     } catch (e) {
       alert("아이디 혹은 비밀번호를 확인해주세요.");
       // 서버에서 받은 에러 메시지 출력
-      console.log(username);
-      console.log(password);
     }
   };
 
@@ -135,8 +133,10 @@ function Signinbox() {
             </div>
             <div className="grid grid-cols-2 gap-8 items-center ml-rt mt-loginspacing1 z-50">
               <div className="text-white">Is this your first visit?</div>
-              <div className="text-blue-300">
-                <button onClick={() => navigate("/Signuppage")}>Sign up</button>
+              <div className="text-blue-300 z-50">
+                <button className="z-60 h-12 w-12" onClick={() => navigate("/Signuppage")}>
+                  Sign up
+                </button>
               </div>
             </div>
           </form>

@@ -20,7 +20,7 @@ function Mainbackground(props: MainProps) {
     <div className="h-h1" style={{ backgroundColor: theme }}>
       <div className="flex justify-center">
         <div className="absolute md:w-w2 md:h-h2 w-w3 h-h3 ">
-          <img src={logo} alt="logo" />
+          <img className="mt-20 md:mt-0" src={logo} alt="logo" />
         </div>
       </div>
       <div className="absolute w-w7 h-h7 mt-sph ml-spw z-30">

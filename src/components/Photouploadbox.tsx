@@ -1,7 +1,8 @@
 import axios from "axios";
 import { url } from "inspector";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import Loading from "./Loading";
 
 // 사진 업로드 박스 -> 드래그앤 드롭, 누르면 파일 업로드 기능
 const ALLOW_FILE_EXTENSION = "jpg,jpeg,png";
@@ -9,13 +10,52 @@ const FILE_SIZE_MAX_LIMIT = 5 * 1024 * 1024; // 5MB
 function Photouploadbox() {
   const [file, setFileImage] = useState("");
   const [filename, setFile] = useState<File>();
+  const [loading, setLoading] = useState(false);
+  const [count, setCount] = useState(0);
+  const countUp = () => setCount(count + 1);
+
   const navigate = useNavigate();
 
-  let user_id = "b896dfb0276e47ceb8dc94d84281c845";
+  let user_id = "00000000000000000000000000000001";
+  var cnt = 0;
+
+  const aiSetting = async () => {
+    if (count === 0) {
+      await axios
+        .get(`http://localhost:8080/v1/api/animals/models`)
+        .then(res => {
+          if (res.data.test === "succes") {
+            console.log("AI set");
+          }
+        })
+        .catch(error => console.log("AI already set"));
+    } else {
+      console.log("AI already set");
+    }
+  };
+  useEffect(() => {
+    console.log("useEffect!!", count);
+    if (count === 0) {
+      aiSetting();
+    }
+  }, []);
+
+  //   if (cnt === 0) {
+  //     await axios.get(`http://localhost:8080/v1/api/animals/models`).then(res => {
+  //       if (res.data.test === "success") {
+  //         console.log("good");
+  //       }
+  //     });
+  //   } else {
+  //     cnt = 1;
+  //   }
+  // };
+
   const saveFileImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
     setFileImage(URL.createObjectURL(e.target.files[0]));
     photoUploadValid(e);
+    countUp();
   };
   const photoUploadValid = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.currentTarget;
@@ -42,22 +82,45 @@ function Photouploadbox() {
     setFile(files);
   };
 
-  let formdata = new FormData();
-  let requestOptions = {
-    method: "POST",
-    body: formdata,
-  };
-
+  var task_id = "";
   const photoUpload = async () => {
     if (filename !== undefined) {
       try {
         const formData = new FormData();
 
-        formData.append("user_id", user_id);
+        //formData.append("user_id", user_id);
         formData.append("filename", filename);
-        await axios
-          .post("http://localhost:8080/v1/api/animals/user", formData)
-          .then(response => navigate("/Resultpage", { state: response.data }));
+        const res = await axios.post(
+          `http://localhost:8080/v1/api/animals/user/${user_id}`,
+          formData,
+        );
+        task_id = res.data.task_id;
+        var picuuid = res.data.picuuid;
+        const picFormData = new FormData();
+        picFormData.append("picuuid", picuuid);
+        var count = 0;
+        if (task_id !== "") {
+          setLoading(true);
+          const getAnswer = async () => {
+            await axios
+              .post(
+                `http://localhost:8080/v1/api/animals/user/${user_id}/tasks/${task_id}`,
+                picFormData,
+              )
+              .then(res => {
+                setLoading(false);
+                navigate("/Resultpage", { state: res.data });
+                clearInterval(timer);
+              })
+              .catch(error => {
+                // 안됐을때
+                console.log("err");
+                clearInterval(timer);
+              });
+          };
+          const timer = setInterval(getAnswer, 2000);
+          return () => clearInterval(timer);
+        }
         // const res = await axios({
         //   method: "post",
         //   url: "http://localhost:8080/v1/api/animals/user",
@@ -83,8 +146,11 @@ function Photouploadbox() {
             id="userImage"
             src={file || "data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA="}
             alt="userImage"
-            className="absolute justify-center rounded-lg z-50 w-72 h-72"
+            className="absolute justify-center rounded-lg z-0 w-72 h-72"
           />
+          <div className="absolute justify-center rounded-lg z-50 w-48 h-48">
+            {loading ? <Loading /> : null}
+          </div>
           <svg
             aria-hidden="true"
             className="mb-3 w-10 h-10 text-gray-400"
