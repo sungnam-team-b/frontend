@@ -10,6 +10,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { getUserId } from "@slices/uuid";
 import { useDispatch } from "react-redux";
+import { getUser } from "@slices/user";
 
 function Signinbox() {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ function Signinbox() {
     password: "",
   };
   var uuid = "";
+  var access_token = "";
   const submit = async (values: any) => {
     const { username, password } = values;
 
@@ -34,15 +36,19 @@ function Signinbox() {
 
       if (result) {
         uuid = result.data.uuid;
+        access_token = result.data.access_token;
         dispatch(getUserId(uuid));
+        dispatch(getUser(username));
         alert("로그인 완료");
         navigate("/Mainpage");
-        onLoginSuccess(result);
+
+        onLoginSuccess(access_token);
       } else {
         console.log("bbb");
       }
     } catch (e) {
       alert("아이디 혹은 비밀번호를 확인해주세요.");
+      window.location.replace("/Signinpage");
       // 서버에서 받은 에러 메시지 출력
     }
   };
@@ -60,13 +66,13 @@ function Signinbox() {
       });
   };
 
-  const onLoginSuccess = (response: { data: { accessToken: any } }) => {
-    console.log(response.data);
-    const { accessToken } = response.data;
+  const onLoginSuccess = (response: any) => {
+    console.log(response);
+    const { accessToken } = response;
     console.log(accessToken);
 
     // accessToken 설정
-    axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+    axios.defaults.headers.common["Authorization"] = `${response}`;
 
     // accessToken 만료하기 1분 전에 로그인 연장
     setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 60000);

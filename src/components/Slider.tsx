@@ -39,6 +39,22 @@ function Slider() {
         );
 
         greats = response.data;
+
+        greats.map(data => {
+          if (data.name === "tiger") data.name = "호랑이띠";
+          if (data.name === "horse") data.name = "말띠";
+          if (data.name === "snake") data.name = "뱀띠";
+          if (data.name === "chicken") data.name = "닭띠";
+          if (data.name === "pig") data.name = "돼지띠";
+          if (data.name === "lamb") data.name = "양띠";
+          if (data.name === "dog") data.name = "개띠";
+          if (data.name === "mouse") data.name = "쥐띠";
+          if (data.name === "monkey") data.name = "원숭이띠";
+          if (data.name === "dragon") data.name = "용띠";
+          if (data.name === "cow") data.name = "소띠";
+          if (data.name === "rabbit") data.name = "토끼띠";
+        });
+
         console.log(greats);
       } catch (e: any) {
         setError(e);
@@ -51,15 +67,15 @@ function Slider() {
   const greatslider = greats.map(great => (
     <SwiperSlide>
       <div
-        className="absolute w-[30rem] h-[30rem] bg-cover grid place-items-center"
+        className="absolute w-[32rem] h-[32rem] -bottom-0 md:-bottom-4 bg-cover grid place-items-center"
         style={{ background: `url(${result})`, backgroundSize: "100%" }}
         onClick={() => navigate("/Detailpage", { state: great })}
       >
-        <div className="absolute w-[14rem] h-[14rem] z-40">
+        <div className="absolute w-[13rem] h-[17rem] z-40 bg-cover">
           <img src={great.great_url} alt="" />
         </div>
 
-        <div className="z-40 mt-[22rem]">{great.name}</div>
+        <div className="z-40 mt-[22rem] text-[0.8rem]">{great.name}</div>
       </div>
     </SwiperSlide>
   ));
@@ -83,7 +99,7 @@ function Slider() {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiper"
+        className="mySwiper z-50"
       >
         {greatslider}
       </Swiper>

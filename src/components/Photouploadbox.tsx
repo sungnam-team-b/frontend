@@ -82,11 +82,11 @@ function Photouploadbox() {
     if (filename !== undefined) {
       try {
         const formData = new FormData();
-
         //formData.append("user_id", user_id);
         formData.append("filename", filename);
         const res = await axios.post(
           `http://ec2-3-35-165-113.ap-northeast-2.compute.amazonaws.com:8080/api/v1/animals/user/${user_id}`,
+
           formData,
         );
         task_id = res.data.task_id;
@@ -109,8 +109,9 @@ function Photouploadbox() {
               })
               .catch(error => {
                 // 안됐을때
-                console.log("err");
+                console.log(error);
                 clearInterval(timer);
+                setLoading(false);
               });
           };
           const timer = setInterval(getAnswer, 2000);
