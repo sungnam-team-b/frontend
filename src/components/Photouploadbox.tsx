@@ -21,26 +21,12 @@ function Photouploadbox() {
   const user_id = useSelector<any>(state => state.uuid.value);
   var cnt = 0;
 
-  // const aiSetting = async () => {
-  //   if (count === 0) {
-  //     await axios
-  //       .get(`http://localhost:8080/v1/api/animals/models`)
-  //       .then(res => {
-  //         if (res.data.test === "succes") {
-  //           console.log("AI set");
-  //         }
-  //       })
-  //       .catch(error => console.log("AI already set"));
-  //   } else {
-  //     console.log("AI already set");
-  //   }
-  // };
-  // useEffect(() => {
-  //   console.log("useEffect!!", count);
-  //   if (count === 0) {
-  //     setAI();
-  //   }
-  // }, []);
+  useEffect(() => {
+    console.log("useEffect!!", count);
+    if (count === 0) {
+      setAI();
+    }
+  }, []);
   const dispatch = useDispatch();
   const aiState = useSelector<any>(state => state.ai.value);
   const setAI = async () => {
@@ -54,7 +40,7 @@ function Photouploadbox() {
             dispatch(getAI(1)); // ai set 완료
           }
         })
-        .catch(error => console.log("sdfs")); // 이미 ai set
+        .catch(error => dispatch(getAI(1))); // 이미 ai set
     }
   };
 
