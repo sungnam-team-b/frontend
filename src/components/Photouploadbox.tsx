@@ -83,7 +83,7 @@ function Photouploadbox() {
         //formData.append("user_id", user_id);
         formData.append("filename", filename);
         const res = await axios.post(
-          `http://localhost:8080/v1/api/animals/user/${user_id}`,
+          `http://localhost:8080/api/v1/animals/user/${user_id}`,
           formData,
         );
         task_id = res.data.task_id;
@@ -106,8 +106,9 @@ function Photouploadbox() {
               })
               .catch(error => {
                 // 안됐을때
-                console.log("err");
+                console.log(error);
                 clearInterval(timer);
+                setLoading(false);
               });
           };
           const timer = setInterval(getAnswer, 2000);

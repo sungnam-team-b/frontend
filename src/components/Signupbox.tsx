@@ -82,7 +82,7 @@ function Signupbox() {
   };
 
   const checkID = async (type: string | undefined, value: any | undefined) => {
-    const data = await axios.get(`http://localhost:8080/v1/api/users/?case=${type}&value=${value}`);
+    const data = await axios.get(`http://localhost:8080/api/v1/users/?case=${type}&value=${value}`);
     if (data.data.result === false) {
       return 0;
     } else {

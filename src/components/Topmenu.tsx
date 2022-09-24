@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import brightness from "@images/brightness.png";
 import logout from "@images/logout.png";
 import description from "@images/approved.png";
@@ -10,6 +10,7 @@ import { Provider, useDispatch, useSelector } from "react-redux";
 import { changeTheme } from "@slices/theme";
 import { useNavigate } from "react-router-dom";
 import { ReducerType } from "../rootReducer";
+import { getUser } from "@slices/user";
 
 // 상단바 메뉴 컴포넌트
 
@@ -26,16 +27,32 @@ function Topmenu() {
     }
   };
   const navigate = useNavigate();
-  const username = useSelector<any>(state => state.user.value);
+  let username = useSelector<any>(state => state.user.value);
   let userID = "";
-  let userState = "";
+  let userState = "로그인";
+  let isUser = 0;
+  console.log(username);
+
   if (username === "비회원") {
+    //  비회원
     userID = "게스트";
-    userState = "비회원";
+    userState = "로그인";
+    isUser = 0;
   } else {
+    // 회원
     userID = String(username);
     userState = "회원";
+    isUser = 1;
   }
+
+  const log = () => {
+    if (isUser === 0) {
+      //  비회원
+      navigate("/Signinpage");
+    } else {
+      console.log("asas");
+    }
+  };
   return (
     <nav>
       {/* MODE: WEB */}
@@ -61,12 +78,15 @@ function Topmenu() {
           </button>
         </div>
         <div className="grid grid-cols-4 text-center">
-          <div className="mt-menubuttonspacingt5 md:mt-menubuttonspacingt2">{userState}</div>
+          <div className="mt-menubuttonspacingt5 md:mt-menubuttonspacingt2">
+            <button onClick={log}>{userState}</button>
+          </div>
           <div className="mt-menubuttonspacingt5 md:mt-menubuttonspacingt2">{userID}</div>
           <div className="mt-menubuttonspacingt6 md:mt-menubuttonspacingt3">
             <button
               onClick={() => {
-                navigate("/");
+                window.location.replace("/");
+                dispatch(getUser("비회원"));
                 alert("로그아웃 되었습니다!");
               }}
             >
@@ -111,6 +131,7 @@ function Topmenu() {
           <button
             onClick={() => {
               navigate("/");
+              dispatch(getUser("비회원"));
               alert("로그아웃 되었습니다!");
             }}
           >

@@ -25,7 +25,7 @@ function Signinbox() {
     const { username, password } = values;
 
     try {
-      const result = await axios.post("http://localhost:8080/v1/api/users/auth", {
+      const result = await axios.post("http://localhost:8080/api/v1/users/auth", {
         username,
         password,
       });
@@ -42,6 +42,7 @@ function Signinbox() {
       }
     } catch (e) {
       alert("아이디 혹은 비밀번호를 확인해주세요.");
+      window.location.replace("/Signinpage");
       // 서버에서 받은 에러 메시지 출력
     }
   };

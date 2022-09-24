@@ -59,8 +59,8 @@ function Detailpage() {
     <div>
       <Mainbackground4>
         <Topmenu />
-        <div className="flex flex-row">
-          <div className="w-[50vw] h-[100vh]  flex items-center justify-center">
+        <div className="md:flex md:flex-row grid-rows-2">
+          <div className="md:w-[50vw] md:h-[100vh] h-[45vh] pt-12 flex items-center justify-center">
             <div
               className="absolute w-[18rem] h-[18rem] md:w-[30rem] md:h-[30rem] bg-cover grid place-items-center"
               style={{ background: `url(${result})`, backgroundSize: "100%" }}
@@ -72,8 +72,8 @@ function Detailpage() {
               <div className="z-40 mt-[12rem] md:mt-[22rem] ">{state.name}</div>
             </div>
           </div>
-          <div className="w-[50vw] h-[100vh] flex items-left justify-center flex flex-col">
-            <div className="w-[30vw] text-[#F4DDB2] mb-4 text-center text-[1.5rem] ">
+          <div className="md:w-[50vw] md:h-[100vh] h-[50vh] w-full items-left justify-center md:flex flex-col">
+            <div className="md:w-[30vw] w-full text-[#F4DDB2] mb-4 text-center text-[1.5rem] ">
               올해의 운세와 성격
             </div>
 
