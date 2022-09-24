@@ -77,7 +77,7 @@ function Detailpage() {
               올해의 운세와 성격
             </div>
 
-            <div className="w-[30vw] text-[#F4DDB2] mb-4 ">{luck}</div>
+            <div className="md:w-[30vw] w-full p-3 text-[#F4DDB2] mb-4 ">{luck}</div>
 
             <div className="w-[30vw] text-white">{state.description}</div>
           </div>

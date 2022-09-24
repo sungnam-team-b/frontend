@@ -15,18 +15,18 @@ import html2canvas from "html2canvas";
 function Resultpage() {
   // 한
   const data: any = {
-    mouse: "쥐",
-    cow: "소",
-    tiger: "호랑이",
-    rabbit: "토끼",
-    dragon: "용",
-    snake: "뱀",
-    horse: "말",
-    lamb: "양",
-    monkey: "원숭이",
-    chicken: "닭",
-    dog: "개",
-    pig: "돼지",
+    mouse: "쥐띠",
+    cow: "소띠",
+    tiger: "호랑이띠",
+    rabbit: "토끼띠",
+    dragon: "용띠",
+    snake: "뱀띠",
+    horse: "말띠",
+    lamb: "양띠",
+    monkey: "원숭이띠",
+    chicken: "닭띠",
+    dog: "개띠",
+    pig: "돼지ㄸ:",
   };
   const { state } = useLocation();
   const keys = Object.keys(state.result);

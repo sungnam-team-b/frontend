@@ -10,6 +10,8 @@ import { Provider, useDispatch, useSelector } from "react-redux";
 import { changeTheme } from "@slices/theme";
 import { useNavigate } from "react-router-dom";
 import { ReducerType } from "../rootReducer";
+
+import axios from "axios";
 import { getUser } from "@slices/user";
 
 // 상단바 메뉴 컴포넌트
@@ -84,10 +86,13 @@ function Topmenu() {
           <div className="mt-menubuttonspacingt5 md:mt-menubuttonspacingt2">{userID}</div>
           <div className="mt-menubuttonspacingt6 md:mt-menubuttonspacingt3">
             <button
-              onClick={() => {
-                window.location.replace("/");
+              onClick={async () => {
+                await delete axios.defaults.headers.common["Authorization"];
+                await console.log(axios.defaults.headers.common);
+
+                await navigate("/");
                 dispatch(getUser("비회원"));
-                alert("로그아웃 되었습니다!");
+                await alert("로그아웃 되었습니다!");
               }}
             >
               <img className="h-4 w-4" src={logout} alt="logout" />
@@ -129,10 +134,13 @@ function Topmenu() {
         {/* 로그아웃 */}
         <div className="mt-menubuttonspacingt6 md:mt-menubuttonspacingt3">
           <button
-            onClick={() => {
-              navigate("/");
+            onClick={async () => {
+              await delete axios.defaults.headers.common["Authorization"];
+              await console.log(axios.defaults.headers.common);
               dispatch(getUser("비회원"));
-              alert("로그아웃 되었습니다!");
+
+              await navigate("/");
+              await alert("로그아웃 되었습니다!");
             }}
           >
             <img className="h-4 w-4" src={logout} alt="logout" />

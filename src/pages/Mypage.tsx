@@ -25,7 +25,7 @@ function Mypage() {
           </div>
 
           <div className=" h-footer"></div>
-          <div className="absolute inset-x-0 bottom-menubuttonspacing4 flex justify-center ">
+          <div className="absolute inset-x-0 bottom-menubuttonspacing7 md:bottom-menubuttonspacing4 flex justify-center ">
             <Backbutton />
           </div>
         </div>
