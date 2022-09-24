@@ -35,12 +35,12 @@ function Photouploadbox() {
   //     console.log("AI already set");
   //   }
   // };
-  // useEffect(() => {
-  //   console.log("useEffect!!", count);
-  //   if (count === 0) {
-  //     setAI();
-  //   }
-  // }, []);
+  useEffect(() => {
+    console.log("useEffect!!", count);
+    if (count === 0) {
+      setAI();
+    }
+  }, []);
   const dispatch = useDispatch();
   const aiState = useSelector<any>(state => state.ai.value);
   const setAI = async () => {
@@ -54,7 +54,7 @@ function Photouploadbox() {
             dispatch(getAI(1)); // ai set 완료
           }
         })
-        .catch(error => console.log("sdfs")); // 이미 ai set
+        .catch(error => dispatch(getAI(1))); // 이미 ai set
     }
   };
 
