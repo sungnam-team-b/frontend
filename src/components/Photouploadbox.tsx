@@ -21,20 +21,6 @@ function Photouploadbox() {
   const user_id = useSelector<any>(state => state.uuid.value);
   var cnt = 0;
 
-  // const aiSetting = async () => {
-  //   if (count === 0) {
-  //     await axios
-  //       .get(`http://localhost:8080/v1/api/animals/models`)
-  //       .then(res => {
-  //         if (res.data.test === "succes") {
-  //           console.log("AI set");
-  //         }
-  //       })
-  //       .catch(error => console.log("AI already set"));
-  //   } else {
-  //     console.log("AI already set");
-  //   }
-  // };
   useEffect(() => {
     console.log("useEffect!!", count);
     if (count === 0) {
