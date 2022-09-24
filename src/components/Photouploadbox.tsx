@@ -34,7 +34,7 @@ function Photouploadbox() {
       console.log("AI already set");
     } else {
       await axios
-        .get(`http://localhost:8080/v1/api/animals/models`)
+        .get(`http://localhost:8080/api/v1/animals/models`)
         .then(res => {
           if (res.data.test === "succes") {
             dispatch(getAI(1)); // ai set 완료
@@ -84,7 +84,7 @@ function Photouploadbox() {
         //formData.append("user_id", user_id);
         formData.append("filename", filename);
         const res = await axios.post(
-          `http://localhost:8080/v1/api/animals/user/${user_id}`,
+          `http://localhost:8080/api/v1/animals/user/${user_id}`,
           formData,
         );
         task_id = res.data.task_id;
@@ -97,7 +97,7 @@ function Photouploadbox() {
           const getAnswer = async () => {
             await axios
               .post(
-                `http://localhost:8080/v1/api/animals/user/${user_id}/tasks/${task_id}`,
+                `http://localhost:8080/api/v1/animals/user/${user_id}/tasks/${task_id}`,
                 picFormData,
               )
               .then(res => {

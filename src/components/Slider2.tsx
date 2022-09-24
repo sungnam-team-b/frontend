@@ -34,7 +34,7 @@ interface mydatatype {
 
 export interface mydatainterface extends Array<mydatatype> {}
 
-let mypagedata: mydatainterface;
+let mypagedata: mydatainterface | undefined;
 
 function Slider2() {
   const [animals, setAnimals] = useState(null);
@@ -49,9 +49,27 @@ function Slider2() {
         await setError(null);
         await setAnimals(null);
         await setLoading(true);
-        const response = await axios.get(`http://localhost:8080/v1/api/animals/${user_id}/mypage`);
-        mypagedata = response.data;
-        console.log(mypagedata);
+        await console.log(axios.defaults.headers);
+        const response = await axios.get(
+          `http://localhost:8080/api/v1/animals/user/${user_id}/mypage`,
+        );
+        mypagedata = (await response.data) as mydatainterface;
+        mypagedata.map(data => {
+          console.log(data.great_id.name);
+          if (data.great_id.name === "tiger") data.great_id.name = "호랑이띠";
+          if (data.great_id.name === "horse") data.great_id.name = "말띠";
+          if (data.great_id.name === "snake") data.great_id.name = "뱀띠";
+          if (data.great_id.name === "chicken") data.great_id.name = "닭띠";
+          if (data.great_id.name === "pig") data.great_id.name = "돼지띠";
+          if (data.great_id.name === "lamb") data.great_id.name = "양띠";
+          if (data.great_id.name === "dog") data.great_id.name = "개띠";
+          if (data.great_id.name === "mouse") data.great_id.name = "쥐띠";
+          if (data.great_id.name === "monkey") data.great_id.name = "원숭이띠";
+          if (data.great_id.name === "dragon") data.great_id.name = "용띠";
+          if (data.great_id.name === "cow") data.great_id.name = "소띠";
+          if (data.great_id.name === "rabbit") data.great_id.name = "토끼띠";
+          console.log(data.great_id.name);
+        });
       } catch (e: any) {
         setError(e);
       }
@@ -60,39 +78,43 @@ function Slider2() {
     fetchAnimals();
   }, []);
 
-  const greatslider = mypagedata.map(mydata => (
-    <SwiperSlide>
-      <div
-        className="absolute w-[27rem] h-[28rem] bg-mainorange bg-cover"
-        style={{ background: `url(${result})`, backgroundSize: "100%" }}
-      >
-        <div className="flex flex-row mt-14">
-          <div className="w-[8rem]"></div>
-          <div className="w-[14rem]">
-            <div className=" text-center grid place-items-center flex flex-column mt-[3rem]">
-              <div className="flex flex-row w-[6.5rem] mr-[7rem]">
-                <img className="w-[2.5rem]" src={mydata.picture_id.picture_url}></img>
-                <img className="w-[2.5rem]" src={mydata.great_id.great_url}></img>
-              </div>
+  var greatslider;
 
-              <div className="flex flex-row mt-[1rem]">
-                <div className="text-sm mr-[1.5rem]">{mydata.great_id.name}</div>
-                <div className="text-sm">{mydata.similarity}</div>
-              </div>
+  if (mypagedata != undefined) {
+    greatslider = mypagedata.map(mydata => (
+      <SwiperSlide>
+        <div
+          className="absolute w-[27rem] h-[28rem] bg-mainorange bg-cover"
+          style={{ background: `url(${result})`, backgroundSize: "100%" }}
+        >
+          <div className="flex flex-row mt-14">
+            <div className="w-[8rem]"></div>
+            <div className="w-[14rem]">
+              <div className=" text-center grid place-items-center flex flex-column mt-[3rem]">
+                <div className="flex flex-row w-[5.5rem] mr-[7rem]">
+                  <img className="w-[1.5rem] mr-4" src={mydata.picture_id.picture_url}></img>
+                  <img className="w-[1.5rem]" src={mydata.great_id.great_url}></img>
+                </div>
 
-              <div className="mt-[2rem]">
-                <Readmorebutton
-                  description={mydata.great_id.description}
-                  great_url={mydata.great_id.great_url}
-                ></Readmorebutton>
+                <div className="flex flex-row mt-[1rem]">
+                  <div className="text-sm mr-[1.5rem]">{mydata.great_id.name}</div>
+                  <div className="text-sm">{mydata.similarity}%</div>
+                </div>
+
+                <div className="mt-[2rem]">
+                  <Readmorebutton
+                    description={mydata.great_id.description}
+                    great_url={mydata.great_id.great_url}
+                  ></Readmorebutton>
+                </div>
               </div>
             </div>
+            <div className="w-[8rem]"></div>
           </div>
-          <div className="w-[8rem]"></div>
         </div>
-      </div>
-    </SwiperSlide>
-  ));
+      </SwiperSlide>
+    ));
+  }
 
   return (
     <>
