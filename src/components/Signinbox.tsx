@@ -10,6 +10,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { getUserId } from "@slices/uuid";
 import { useDispatch } from "react-redux";
+import { getUser } from "@slices/user";
 
 function Signinbox() {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ function Signinbox() {
       if (result) {
         uuid = result.data.uuid;
         dispatch(getUserId(uuid));
+        dispatch(getUser(username));
         alert("로그인 완료");
         navigate("/Mainpage");
         onLoginSuccess(result);
@@ -46,7 +48,7 @@ function Signinbox() {
 
   const onSilentRefresh = () => {
     axios
-      .post("http://localhost:8080/v1/api/users/auth", data)
+      .post("http://localhost:8080/api/v1/users/auth", data)
       .then(onLoginSuccess)
       .catch(error => {
         // ... 로그인 실패 처리

@@ -26,7 +26,16 @@ function Topmenu() {
     }
   };
   const navigate = useNavigate();
-
+  const username = useSelector<any>(state => state.user.value);
+  let userID = "";
+  let userState = "";
+  if (username === "비회원") {
+    userID = "게스트";
+    userState = "비회원";
+  } else {
+    userID = String(username);
+    userState = "회원";
+  }
   return (
     <nav>
       {/* MODE: WEB */}
@@ -52,8 +61,8 @@ function Topmenu() {
           </button>
         </div>
         <div className="grid grid-cols-4 text-center">
-          <div className="mt-menubuttonspacingt5 md:mt-menubuttonspacingt2">비회원</div>
-          <div className="mt-menubuttonspacingt5 md:mt-menubuttonspacingt2">게스트</div>
+          <div className="mt-menubuttonspacingt5 md:mt-menubuttonspacingt2">{userState}</div>
+          <div className="mt-menubuttonspacingt5 md:mt-menubuttonspacingt2">{userID}</div>
           <div className="mt-menubuttonspacingt6 md:mt-menubuttonspacingt3">
             <button
               onClick={() => {

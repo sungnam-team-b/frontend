@@ -63,7 +63,7 @@ function Signupbox() {
     const { email, username, password, alias } = values;
     try {
       await axios
-        .post("http://localhost:8080/v1/api/users/", {
+        .post("http://localhost:8080/api/v1/users/", {
           email,
           username,
           password,

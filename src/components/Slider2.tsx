@@ -25,14 +25,16 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-let mypagedata = [
-  {
-    id: 1,
-    similarity: 0,
-    picture_id: { id: 1, picture_url: "", user_id: null },
-    great_id: { name: "", description: "", great_url: "" },
-  },
-];
+interface mydatatype {
+  id: number;
+  similarity: number;
+  picture_id: { id: number; picture_url: string; user_id: string };
+  great_id: { name: string; description: string; great_url: string };
+}
+
+export interface mydatainterface extends Array<mydatatype> {}
+
+let mypagedata: mydatainterface;
 
 function Slider2() {
   const [animals, setAnimals] = useState(null);
