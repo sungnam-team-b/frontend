@@ -46,7 +46,7 @@ function Signinbox() {
 
   const onSilentRefresh = () => {
     axios
-      .post("http://localhost:8080/v1/api/users/auth", data)
+      .post("http://localhost:8080/api/v1/users/auth", data)
       .then(onLoginSuccess)
       .catch(error => {
         // ... 로그인 실패 처리

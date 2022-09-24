@@ -33,9 +33,7 @@ function Slider() {
         await setError(null);
         await setAnimals(null);
         await setLoading(true);
-        const response = await axios.get(
-          "http://ec2-3-38-28-71.ap-northeast-2.compute.amazonaws.com:8080/v1/api/greats/greatlist",
-        );
+        const response = await axios.get("http://localhost:8080/api/v1/animals/animallist");
         greats = response.data;
         console.log(greats);
       } catch (e: any) {
