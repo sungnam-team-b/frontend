@@ -86,7 +86,7 @@ function Photouploadbox() {
         //formData.append("user_id", user_id);
         formData.append("filename", filename);
         const res = await axios.post(
-          `http://localhost:8080/v1/api/animals/user/${user_id}`,
+          `http://ec2-3-35-165-113.ap-northeast-2.compute.amazonaws.com:8080/api/v1/animals/user/${user_id}`,
           formData,
         );
         task_id = res.data.task_id;

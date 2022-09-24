@@ -83,7 +83,7 @@ function Signupbox() {
 
   const checkID = async (type: string | undefined, value: any | undefined) => {
     const data = await axios.get(
-      `http://ec2-3-38-28-71.ap-northeast-2.compute.amazonaws.com:8080/v1/api/users/?case=${type}&value=${value}`,
+      `http://ec2-3-38-28-71.ap-northeast-2.compute.amazonaws.com:8080/api/v1/users/?case=${type}&value=${value}`,
     );
     if (data.data.result === false) {
       return 0;
