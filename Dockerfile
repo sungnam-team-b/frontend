@@ -1,10 +1,8 @@
-FROM node:12 AS builder
-WORKDIR /app
-COPY . .
-RUN yarn build
+FROM node:14.19.1 as build
 
-FROM nginx:alpine
-WORKDIR /usr/share/nginx/html
-COPY --from=builder /app/build .
+WORKDIR /frontend
 
-CMD ["nginx","-g","daemon off;"]
+RUN  npm install
+
+COPY . /frontend
+RUN npm run build

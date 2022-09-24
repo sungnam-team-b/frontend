@@ -33,9 +33,7 @@ function Slider() {
         await setError(null);
         await setAnimals(null);
         await setLoading(true);
-        const response = await axios.get(
-          "http://ec2-3-38-28-71.ap-northeast-2.compute.amazonaws.com:8080/v1/api/greats/greatlist",
-        );
+        const response = await axios.get("http://localhost:8080/v1/api/animals/animallist");
         greats = response.data;
         console.log(greats);
       } catch (e: any) {
@@ -53,7 +51,7 @@ function Slider() {
         style={{ background: `url(${result})`, backgroundSize: "100%" }}
         onClick={() => navigate("/Detailpage", { state: great })}
       >
-        <div className="absolute w-[15rem] h-[15rem] z-40">
+        <div className="absolute w-[14rem] h-[14rem] z-40">
           <img src={great.great_url} alt="" />
         </div>
 
