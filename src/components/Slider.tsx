@@ -35,7 +35,7 @@ function Slider() {
         await setLoading(true);
 
         const response = await axios.get(
-          "http://ec2-3-37-191-225.ap-northeast-2.compute.amazonaws.com:8080/api/v1/animals/animallist",
+          "http://ec2-3-38-109-64.ap-northeast-2.compute.amazonaws.com:8080/api/v1/animals/animallist",
         );
 
         greats = response.data;

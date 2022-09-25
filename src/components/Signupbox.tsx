@@ -63,7 +63,7 @@ function Signupbox() {
     const { email, username, password, alias } = values;
     try {
       await axios
-        .post("http://ec2-3-37-191-225.ap-northeast-2.compute.amazonaws.com:8080/api/v1/users/", {
+        .post("http://ec2-3-38-109-64.ap-northeast-2.compute.amazonaws.com:8080/api/v1/users/", {
           email,
           username,
           password,
@@ -83,7 +83,7 @@ function Signupbox() {
 
   const checkID = async (type: string | undefined, value: any | undefined) => {
     const data = await axios.get(
-      `http://ec2-3-37-191-225.ap-northeast-2.compute.amazonaws.com:8080/api/v1/users/?case=${type}&value=${value}`,
+      `http://ec2-3-38-109-64.ap-northeast-2.compute.amazonaws.com:8080/api/v1/users/?case=${type}&value=${value}`,
     );
 
     if (data.data.result === false) {
