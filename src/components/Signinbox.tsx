@@ -27,7 +27,7 @@ function Signinbox() {
 
     try {
       const result = await axios.post(
-        "http://ec2-3-35-194-196.ap-northeast-2.compute.amazonaws.com:8080/api/v1/users/auth",
+        "http://ec2-3-37-191-225.ap-northeast-2.compute.amazonaws.com:8080/api/v1/users/auth",
         {
           username,
           password,
@@ -57,7 +57,7 @@ function Signinbox() {
     axios
 
       .post(
-        "http://ec2-3-35-165-113.ap-northeast-2.compute.amazonaws.com:8080/api/v1/users/auth",
+        "http://ec2-3-37-191-225.ap-northeast-2.compute.amazonaws.com:8080/api/v1/users/auth",
         data,
       )
       .then(onLoginSuccess)

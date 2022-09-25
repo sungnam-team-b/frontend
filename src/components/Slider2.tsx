@@ -52,7 +52,7 @@ function Slider2() {
 
         await console.log(axios.defaults.headers);
         const response = await axios.get(
-          `http://ec2-3-35-165-113.ap-northeast-2.compute.amazonaws.com:8080/api/v1/animals/${user_id}/mypage`,
+          `http://ec2-3-37-191-225.ap-northeast-2.compute.amazonaws.com:8080/api/v1/animals/${user_id}/mypage`,
         );
         mypagedata = (await response.data) as mydatainterface;
         mypagedata.map(data => {

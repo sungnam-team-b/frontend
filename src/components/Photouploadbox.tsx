@@ -35,7 +35,7 @@ function Photouploadbox() {
     } else {
       await axios
         .get(
-          `http://ec2-3-35-165-113.ap-northeast-2.compute.amazonaws.com/:8080/api/v1/animals/models`,
+          `http://ec2-3-37-191-225.ap-northeast-2.compute.amazonaws.com:8080/api/v1/animals/models`,
         )
         .then(res => {
           if (res.data.test === "succes") {
@@ -85,7 +85,7 @@ function Photouploadbox() {
         //formData.append("user_id", user_id);
         formData.append("filename", filename);
         const res = await axios.post(
-          `http://ec2-3-35-165-113.ap-northeast-2.compute.amazonaws.com:8080/api/v1/animals/user/${user_id}`,
+          `http://ec2-3-37-191-225.ap-northeast-2.compute.amazonaws.com:8080/api/v1/animals/user/${user_id}`,
 
           formData,
         );
@@ -99,11 +99,12 @@ function Photouploadbox() {
           const getAnswer = async () => {
             await axios
               .post(
-                `http://ec2-3-35-165-113.ap-northeast-2.compute.amazonaws.com:8080/api/v1/animals/user/${user_id}/tasks/${task_id}`,
+                `http://ec2-3-37-191-225.ap-northeast-2.compute.amazonaws.com:8080/api/v1/animals/user/${user_id}/tasks/${task_id}`,
                 picFormData,
               )
               .then(res => {
                 setLoading(false);
+                console.log(res.data);
                 navigate("/Resultpage", { state: res.data });
                 clearInterval(timer);
               })
