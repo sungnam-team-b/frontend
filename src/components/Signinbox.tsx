@@ -38,7 +38,7 @@ function Signinbox() {
         dispatch(getUser(username));
         alert("로그인 완료");
         navigate("/Mainpage");
-
+        console.log(uuid);
         onLoginSuccess(access_token);
       } else {
         console.log("bbb");
