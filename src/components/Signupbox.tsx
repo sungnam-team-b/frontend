@@ -109,9 +109,9 @@ function Signupbox() {
             <div className="absolute inset-4 h-12 flex justify-center text-white">회원가입</div>
             <div className="top-5">
               <div className="grid grid-rows-5">
-                <div className="mb-1.5 mt-1.5">
+                <div className="mb-1.5 md:mt-1.5">
                   <div className="grid grid-cols-4">
-                    <div className="text-sm font-medium text-black">이메일</div>
+                    <div className="text-xs md:text-sm font-medium text-black">이메일</div>
                     <div className="col-span-3 mt-1 text-xxs font-medium text-red-600">
                       {errors.email}
                     </div>
@@ -121,14 +121,14 @@ function Signupbox() {
                     onChange={handleChange}
                     type="email"
                     id="email"
-                    className=" w-80 p-2.5 rounded-md"
+                    className=" w-80 h-8 md:h-10 p-2.5 rounded-md"
                     placeholder="Email address"
                     required
                   />
                 </div>
                 <div className="mb-1.5 mt-1">
                   <div className="grid grid-cols-4">
-                    <div className="text-sm font-medium text-black">아이디</div>
+                    <div className="text-xs md:text-sm font-medium text-black">아이디</div>
                     <div className="col-span-3 mt-1 text-xxs font-medium text-red-600">
                       {errors.username}
                     </div>
@@ -138,14 +138,14 @@ function Signupbox() {
                     onChange={handleChange}
                     type="username"
                     id="username"
-                    className="w-80 p-2.5 rounded-md"
+                    className="w-80 h-8 md:h-10 p-2.5 rounded-md"
                     placeholder="user name"
                     required
                   />
                 </div>
                 <div className="mb-1.5 mt-1">
                   <div className="grid grid-cols-4">
-                    <div className="text-sm font-medium text-black">비밀번호</div>
+                    <div className="text-xs md:text-sm font-medium text-black">비밀번호</div>
                     <div className="col-span-3 mt-1 text-xxs font-medium text-red-600">
                       {errors.password}
                     </div>
@@ -155,14 +155,14 @@ function Signupbox() {
                     onChange={handleChange}
                     type="password"
                     id="password"
-                    className="w-80 p-2.5 rounded-md"
+                    className="w-80 h-8 md:h-10 p-2.5 rounded-md"
                     placeholder="•••••••••"
                     required
                   />
                 </div>
                 <div className="mb-1.5 mt-1">
                   <div className="grid grid-cols-4">
-                    <div className="text-sm font-medium text-black">비밀번호 확인</div>
+                    <div className="text-xs md:text-sm font-medium text-black">비밀번호 확인</div>
                     <div className="col-span-3 mt-1 text-xxs font-medium text-red-600">
                       {errors.passwordConfirm}
                     </div>
@@ -172,14 +172,14 @@ function Signupbox() {
                     onChange={handleChange}
                     type="password"
                     id="passwordConfirm"
-                    className="w-80 p-2.5 rounded-md"
+                    className="w-80 h-8 md:h-10 p-2.5 rounded-md"
                     placeholder="•••••••••"
                     required
                   />
                 </div>
                 <div className="mb-1.5 mt-1">
                   <div className="grid grid-cols-4">
-                    <div className="text-sm font-medium text-black">닉네임</div>
+                    <div className="text-xs md:text-sm font-medium text-black">닉네임</div>
                     <div className="col-span-3 mt-1 text-xxs font-medium text-red-600">
                       {errors.alias}
                     </div>
@@ -189,7 +189,7 @@ function Signupbox() {
                     onChange={handleChange}
                     type="string"
                     id="alias"
-                    className="w-80 p-2.5 rounded-md"
+                    className="w-80 h-8 md:h-10 p-2.5 rounded-md"
                     placeholder="user name"
                     required
                   />

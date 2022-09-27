@@ -28,10 +28,10 @@ function Rankbox() {
   }, []);
 
   var rankmap = Object.values(rankjson).map(ranking => (
-    <div className="flex flex-row mt-2" key={ranking.rank}>
-      <div className="mr-[2rem]">{ranking.rank + 1}등</div>
-      <div className="mr-[2rem]">{ranking.alias}</div>
-      <div className="mr-[2rem]">{ranking.name}</div>
+    <div className="grid grid-cols-5 mt-2 gap-5" key={ranking.rank}>
+      <div className="w-7 mr-[2rem]">{ranking.rank + 1}등</div>
+      <div className="col-span-2">{ranking.alias}</div>
+      <div className="w-10 mr-[2rem]">{ranking.name}</div>
       <div className="">{ranking.similarity}%</div>
     </div>
   ));
@@ -40,7 +40,7 @@ function Rankbox() {
   return (
     <div className="box-border rounded-3xl h-72 w-72 p-4">
       <div className="flex justify-center items-center flex-col">
-        <div className="mt-5 overflow">
+        <div className="md:mt-5 overflow">
           <div className="flex justify-center mb-5">{titleText}</div>
           {rankmap}
         </div>

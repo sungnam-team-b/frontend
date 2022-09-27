@@ -26,7 +26,7 @@ function Resultpage() {
     monkey: "원숭이띠",
     chicken: "닭띠",
     dog: "개띠",
-    pig: "돼지ㄸ:",
+    pig: "돼지띠",
   };
   const { state } = useLocation();
   const keys = Object.keys(state.result);

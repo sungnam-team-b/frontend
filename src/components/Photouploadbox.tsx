@@ -21,28 +21,28 @@ function Photouploadbox() {
   const user_id = useSelector<any>(state => state.uuid.value);
   var cnt = 0;
 
-  useEffect(() => {
-    console.log("useEffect!!", count);
-    if (count === 0) {
-      setAI();
-    }
-  }, []);
-  const dispatch = useDispatch();
-  const aiState = useSelector<any>(state => state.ai.value);
-  const setAI = async () => {
-    if (aiState === 1) {
-      console.log("AI already set");
-    } else {
-      await axios
-        .get(`http://localhost:8080/api/v1/animals/models`)
-        .then(res => {
-          if (res.data.test === "succes") {
-            dispatch(getAI(1)); // ai set 완료
-          }
-        })
-        .catch(error => dispatch(getAI(1))); // 이미 ai set
-    }
-  };
+  // useEffect(() => {
+  //   console.log("useEffect!!", count);
+  //   if (count === 0) {
+  //     setAI();
+  //   }
+  // }, []);
+  // const dispatch = useDispatch();
+  // const aiState = useSelector<any>(state => state.ai.value);
+  // const setAI = async () => {
+  //   if (aiState === 1) {
+  //     console.log("AI already set");
+  //   } else {
+  //     await axios
+  //       .get(`http://localhost:8080/api/v1/animals/models`)
+  //       .then(res => {
+  //         if (res.data.test === "succes") {
+  //           dispatch(getAI(1)); // ai set 완료
+  //         }
+  //       })
+  //       .catch(error => console.log("errrrrrr")); // 이미 ai set
+  //   }
+  // };
 
   const saveFileImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
@@ -144,9 +144,9 @@ function Photouploadbox() {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
             />
           </svg>
