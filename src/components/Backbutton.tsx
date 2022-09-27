@@ -8,7 +8,7 @@ function Backbutton() {
 
   return (
     <button
-      className="mt-28 md:mt-24 bg-green-500 p-4 pl-12 pr-12 rounded-3xl z-50 w-[10rem] h-[3rem]"
+      className="mt-28 md:mt-24 bg-green-500 p-4 md:pl-12 md:pr-12 rounded-3xl z-50 w-[7rem] md:w-[10rem] h-[3rem]"
       onClick={() => navigate("/Mainpage")}
     >
       돌아가기

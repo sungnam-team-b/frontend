@@ -84,7 +84,7 @@ function Signinbox() {
         <div className="flex justify-center items-center flex-col">
           <form onSubmit={handleSubmit} autoComplete="off">
             <div className="relative mb-6 flex justify-center">
-              <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+              <div className="flex absolute left-[3.5rem] inset-y-0 pl-5 md:left-0 items-center md:pl-3 pointer-events-none">
                 <svg
                   aria-hidden="true"
                   className="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
@@ -105,7 +105,7 @@ function Signinbox() {
               />
             </div>
             <div className="relative mb-6 flex justify-center">
-              <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+              <div className="flex absolute left-[3.5rem] inset-y-0 pl-5 md:left-0 items-center md:pl-3 pointer-events-none">
                 <svg
                   aria-hidden="true"
                   className="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
