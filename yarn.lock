@@ -6448,7 +6448,7 @@
     "once" "^1.3.0"
     "path-is-absolute" "^1.0.0"
 
-"glob@^7.0.3", "glob@^7.0.5", "glob@~7.0.6":
+"glob@^7.0.3", "glob@~7.0.6":
   "integrity" "sha512-f8c0rE8JiCxpa52kWPAOa3ZaYEnzofDzCQLCn3Vdk0Z5OVLq3BsRFJI4S4ykpeVW6QMGBUkMeUpoEgWnMTnw5Q=="
   "resolved" "https://registry.npmjs.org/glob/-/glob-7.0.6.tgz"
   "version" "7.0.6"
@@ -6457,6 +6457,16 @@
     "inflight" "^1.0.4"
     "inherits" "2"
     "minimatch" "^3.0.2"
+    "once" "^1.3.0"
+    "path-is-absolute" "^1.0.0"
+
+"glob@^7.0.5":
+  "version" "7.2.3"
+  dependencies:
+    "fs.realpath" "^1.0.0"
+    "inflight" "^1.0.4"
+    "inherits" "2"
+    "minimatch" "^3.1.1"
     "once" "^1.3.0"
     "path-is-absolute" "^1.0.0"
 
@@ -6700,7 +6710,10 @@
   "resolved" "https://registry.npmjs.org/hoopy/-/hoopy-0.1.4.tgz"
   "version" "0.1.4"
 
-"hosted-git-info@^2.1.4", "hosted-git-info@~2.1.5":
+"hosted-git-info@^2.1.4":
+  "version" "2.8.9"
+
+"hosted-git-info@~2.1.5":
   "integrity" "sha512-5sLwVGWIA8493A2PzG/py8s+uBrYqrwmLp6C6U5+Gpw5Ll49OOigsuD4LKbUTExbgedTNPvPb/0GV5ohHYYNBg=="
   "resolved" "https://registry.npmjs.org/hosted-git-info/-/hosted-git-info-2.1.5.tgz"
   "version" "2.1.5"
@@ -8738,7 +8751,15 @@
   "resolved" "https://registry.npmjs.org/normalize-git-url/-/normalize-git-url-3.0.2.tgz"
   "version" "3.0.2"
 
-"normalize-package-data@^2.0.0", "normalize-package-data@~1.0.1 || ^2.0.0", "normalize-package-data@~2.3.5":
+"normalize-package-data@^2.0.0":
+  "version" "2.5.0"
+  dependencies:
+    "hosted-git-info" "^2.1.4"
+    "resolve" "^1.10.0"
+    "semver" "2 || 3 || 4 || 5"
+    "validate-npm-package-license" "^3.0.1"
+
+"normalize-package-data@~1.0.1 || ^2.0.0", "normalize-package-data@~2.3.5":
   "version" "2.3.5"
   dependencies:
     "hosted-git-info" "^2.1.4"
@@ -10934,7 +10955,7 @@
   "resolved" "https://registry.npmjs.org/resolve.exports/-/resolve.exports-1.1.0.tgz"
   "version" "1.1.0"
 
-"resolve@^1.1.7", "resolve@^1.14.2", "resolve@^1.19.0", "resolve@^1.20.0", "resolve@^1.22.0", "resolve@^1.22.1":
+"resolve@^1.1.7", "resolve@^1.10.0", "resolve@^1.14.2", "resolve@^1.19.0", "resolve@^1.20.0", "resolve@^1.22.0", "resolve@^1.22.1":
   "integrity" "sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw=="
   "resolved" "https://registry.npmjs.org/resolve/-/resolve-1.22.1.tgz"
   "version" "1.22.1"
@@ -11162,7 +11183,7 @@
   dependencies:
     "node-forge" "^1"
 
-"semver@^2.3.0 || 3.x || 4 || 5", "semver@~5.1.0", "semver@2 >=2.2.1 || 3.x || 4 || 5", "semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5", "semver@4 || 5":
+"semver@^2.3.0 || 3.x || 4 || 5", "semver@~5.1.0", "semver@2 >=2.2.1 || 3.x || 4 || 5", "semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5":
   "version" "5.1.0"
 
 "semver@^5.6.0":
@@ -11199,6 +11220,9 @@
 
 "semver@~5.3.0":
   "version" "5.3.0"
+
+"semver@4 || 5":
+  "version" "5.7.1"
 
 "semver@7.0.0":
   "integrity" "sha512-+GB6zVA9LWh6zovYQLALHwv5rb2PHGlJi3lfiqIHxR0uuwCgefcOJc59v9fv1w8GbStwxuuqqAjI9NMAOOgq1A=="

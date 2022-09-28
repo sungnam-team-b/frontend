@@ -33,7 +33,6 @@ function Topmenu() {
   let userID = "";
   let userState = "로그인";
   let isUser = 0;
-  console.log(username);
 
   if (username === "비회원") {
     //  비회원

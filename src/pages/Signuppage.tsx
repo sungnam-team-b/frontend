@@ -17,7 +17,7 @@ const Signuppage = () => {
         <div className="h-2"></div>
         <div className="h-body grid place-items-center">
           <div
-            className="absolute w-[30rem] h-[28rem] bg-mainorange bg-cover"
+            className="absolute w-[26rem] h-[28rem] md:w-[30rem] md:h-[28rem] bg-mainorange bg-cover"
             style={{ background: `url(${result})`, backgroundSize: "100%" }}
           >
             <div className="flex flex-row justify-center mt-14">
