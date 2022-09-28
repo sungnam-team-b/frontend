@@ -91,6 +91,7 @@ function Photouploadbox() {
         const picFormData = new FormData();
         picFormData.append("picuuid", picuuid);
         var count = 0;
+        console.log(res);
         if (task_id !== "") {
           setLoading(true);
           const getAnswer = async () => {

@@ -84,16 +84,19 @@ function Slider2() {
     greatslider = mypagedata.map(mydata => (
       <SwiperSlide>
         <div
-          className="absolute w-[27rem] h-[28rem] bg-mainorange bg-cover"
+          className="absolute w-[20rem] h-[20rem] bg-mainorange bg-cover md:w-[27rem] md:h-[28rem]"
           style={{ background: `url(${result})`, backgroundSize: "100%" }}
         >
           <div className="flex flex-row mt-14">
             <div className="w-[8rem]"></div>
             <div className="w-[14rem]">
               <div className=" text-center grid place-items-center flex flex-column mt-[3rem]">
-                <div className="flex flex-row w-[5.5rem] mr-[7rem]">
-                  <img className="w-[1.5rem] mr-4" src={mydata.picture_id.picture_url}></img>
-                  <img className="w-[1.5rem]" src={mydata.great_id.great_url}></img>
+                <div className="flex flex-row ml-11 w-[3rem] mr-[7rem] md:w-[6rem] md:ml-0">
+                  <img
+                    className="w-[1.5rem] md:w-[3rem] mr-4"
+                    src={mydata.picture_id.picture_url}
+                  ></img>
+                  <img className="w-[1.5rem] md:w-[3rem]" src={mydata.great_id.great_url}></img>
                 </div>
 
                 <div className="flex flex-row mt-[1rem]">
