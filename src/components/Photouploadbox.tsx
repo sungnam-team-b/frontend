@@ -76,6 +76,7 @@ function Photouploadbox() {
   };
 
   var task_id = "";
+
   const photoUpload = async () => {
     if (filename !== undefined) {
       try {
@@ -102,10 +103,20 @@ function Photouploadbox() {
                 picFormData,
               )
               .then(res => {
-                setLoading(false);
-                console.log(res.data);
-                navigate("/Resultpage", { state: res.data });
-                clearInterval(timer);
+                if (res.data.ai_result === "notyet" && count <= 10) {
+                  setTimeout(getAnswer, 1000);
+                  count = count + 2;
+                  console.log(count);
+                } else if (count > 10) {
+                  setLoading(false);
+                  alert("다시 시도해주세요");
+                  clearInterval(timer);
+                  window.location.replace("/");
+                } else {
+                  setLoading(false);
+                  navigate("/Resultpage", { state: res.data });
+                  clearInterval(timer);
+                }
               })
               .catch(error => {
                 // 안됐을때
