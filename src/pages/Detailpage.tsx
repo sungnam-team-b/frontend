@@ -76,14 +76,14 @@ function Detailpage() {
             <div className="md:w-[30vw] w-full text-[#F4DDB2] mb-4 text-center text-[1.5rem] ">
               올해의 운세와 성격
             </div>
-
             <div className="md:w-[30vw] w-full p-3 text-[#F4DDB2] mb-4 ">{luck}</div>
-
-            <div className="w-[30vw] text-white">{state.description}</div>
+            <div className="w-[100vw] h-[12rem] md:w-[30vw] text-white overflow-auto">
+              {state.description}
+              <div className="flex justify-center align-center">
+                <Backbutton />
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="absolute inset-x-0 bottom-menubuttonspacing4 flex justify-center ">
-          <Backbutton2 />
         </div>
       </Mainbackground4>
     </div>
