@@ -37,10 +37,16 @@ function Resultpage() {
 
   useEffect(() => {
     window.Kakao.init("fb028531be51c963fa62731f34fe9c5d");
-    try {
-      console.log(window.Kakao.isInitialized());
-    } catch (e) {
-      console.log(e);
+
+    localStorage.setItem("kakao", "success");
+
+    if (localStorage.getItem("kakao") == "success") {
+    } else {
+      try {
+        console.log(window.Kakao.isInitialized());
+      } catch (e) {
+        console.log(e);
+      }
     }
   }, []);
 
@@ -120,7 +126,6 @@ function Resultpage() {
                   </div>
                   <div className="flex flex-column">
                     <div className="text-xs">
-                      <p className="">공유하기</p>
                       <div className="flex flex-column mt-1">
                         <button onClick={() => sendKakaoMessage()}>
                           <Kakaobutton>kakao</Kakaobutton>
