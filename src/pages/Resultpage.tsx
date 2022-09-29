@@ -36,18 +36,12 @@ function Resultpage() {
   console.log(state);
 
   useEffect(() => {
-    window.Kakao.init("fb028531be51c963fa62731f34fe9c5d");
-
-    localStorage.setItem("kakao", "success");
-
-    if (localStorage.getItem("kakao") == "success") {
-    } else {
-      try {
+    try {
+      if (window.Kakao) {
+        window.Kakao.init("fb028531be51c963fa62731f34fe9c5d");
         console.log(window.Kakao.isInitialized());
-      } catch (e) {
-        console.log(e);
       }
-    }
+    } catch (e) {}
   }, []);
 
   const onCapture = () => {
