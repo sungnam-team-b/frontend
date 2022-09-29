@@ -35,6 +35,15 @@ function Resultpage() {
   console.log(state.animalimage);
   console.log(state);
 
+  useEffect(() => {
+    window.Kakao.init("fb028531be51c963fa62731f34fe9c5d");
+    try {
+      console.log(window.Kakao.isInitialized());
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
+
   const onCapture = () => {
     console.log("onCapture");
     html2canvas(document.getElementById("div") as HTMLElement).then(canvas => {
@@ -116,7 +125,6 @@ function Resultpage() {
                         <button onClick={() => sendKakaoMessage()}>
                           <Kakaobutton>kakao</Kakaobutton>
                         </button>
-                        <Urlbutton>url</Urlbutton>
                       </div>
                     </div>
                   </div>
