@@ -8,7 +8,7 @@ import Topmenu from "@components/Topmenu";
 import Urlbutton from "@components/Urlbutton";
 import great1 from "@images/great1.png";
 import result from "@images/result.png";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import html2canvas from "html2canvas";
 import Backbutton from "@components/Backbutton";
@@ -51,6 +51,31 @@ function Resultpage() {
     document.body.removeChild(link);
   };
 
+  const sendKakaoMessage = () => {
+    window.Kakao.Link.sendDefault({
+      objectType: "feed",
+      content: {
+        title: "나와 닮은 12지신 찾기",
+        description: "인공지능이 찾아주는 나와 닮은 12지신과 운세",
+        imageUrl: "",
+        link: {
+          webUrl: "http://ec2-3-38-109-64.ap-northeast-2.compute.amazonaws.com",
+          mobileWebUrl: "http://ec2-3-38-109-64.ap-northeast-2.compute.amazonaws.com",
+        },
+      },
+
+      buttons: [
+        {
+          title: "함께 해보기",
+          link: {
+            webUrl: "http://ec2-3-38-109-64.ap-northeast-2.compute.amazonaws.com",
+            mobileWebUrl: "http://ec2-3-38-109-64.ap-northeast-2.compute.amazonaws.com",
+          },
+        },
+      ],
+    });
+  };
+
   return (
     <Mainbackground>
       <div className="absolute z-40 w-full">
@@ -88,7 +113,9 @@ function Resultpage() {
                     <div className="text-xs">
                       <p className="">공유하기</p>
                       <div className="flex flex-column mt-1">
-                        <Kakaobutton>kakao</Kakaobutton>
+                        <button onClick={() => sendKakaoMessage()}>
+                          <Kakaobutton>kakao</Kakaobutton>
+                        </button>
                         <Urlbutton>url</Urlbutton>
                       </div>
                     </div>
